@@ -1,0 +1,1482 @@
+<div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a
+
+        href="https://github.com/ekalinin/sitemap.js#readme"
+
+    >sitemap (v1.12.0)</a>
+</h1>
+<h4>Sitemap-generating framework</h4>
+<div class="apidocSectionDiv"><a
+    href="#apidoc.tableOfContents"
+    id="apidoc.tableOfContents"
+><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.sitemap">module sitemap</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sitemap.Sitemap">
+            function <span class="apidocSignatureSpan">sitemap.</span>Sitemap
+            <span class="apidocSignatureSpan">(urls, hostname, cacheTime, xslUrl, xmlNs)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sitemap.SitemapItem">
+            function <span class="apidocSignatureSpan">sitemap.</span>SitemapItem
+            <span class="apidocSignatureSpan">(conf)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sitemap.buildSitemapIndex">
+            function <span class="apidocSignatureSpan">sitemap.</span>buildSitemapIndex
+            <span class="apidocSignatureSpan">(conf)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sitemap.createSitemap">
+            function <span class="apidocSignatureSpan">sitemap.</span>createSitemap
+            <span class="apidocSignatureSpan">(conf)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sitemap.createSitemapIndex">
+            function <span class="apidocSignatureSpan">sitemap.</span>createSitemapIndex
+            <span class="apidocSignatureSpan">(conf)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">sitemap.</span>Sitemap.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">sitemap.</span>SitemapItem.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">sitemap.</span>errors</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">sitemap.</span>utils</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">string <span class="apidocSignatureSpan">sitemap.</span>version</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.sitemap.Sitemap">module sitemap.Sitemap</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sitemap.Sitemap.Sitemap">
+            function <span class="apidocSignatureSpan">sitemap.</span>Sitemap
+            <span class="apidocSignatureSpan">(urls, hostname, cacheTime, xslUrl, xmlNs)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.sitemap.Sitemap.prototype">module sitemap.Sitemap.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sitemap.Sitemap.prototype.add">
+            function <span class="apidocSignatureSpan">sitemap.Sitemap.prototype.</span>add
+            <span class="apidocSignatureSpan">(url)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sitemap.Sitemap.prototype.clearCache">
+            function <span class="apidocSignatureSpan">sitemap.Sitemap.prototype.</span>clearCache
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sitemap.Sitemap.prototype.del">
+            function <span class="apidocSignatureSpan">sitemap.Sitemap.prototype.</span>del
+            <span class="apidocSignatureSpan">(url)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sitemap.Sitemap.prototype.isCacheValid">
+            function <span class="apidocSignatureSpan">sitemap.Sitemap.prototype.</span>isCacheValid
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sitemap.Sitemap.prototype.setCache">
+            function <span class="apidocSignatureSpan">sitemap.Sitemap.prototype.</span>setCache
+            <span class="apidocSignatureSpan">(newCache)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sitemap.Sitemap.prototype.toGzip">
+            function <span class="apidocSignatureSpan">sitemap.Sitemap.prototype.</span>toGzip
+            <span class="apidocSignatureSpan">(callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sitemap.Sitemap.prototype.toString">
+            function <span class="apidocSignatureSpan">sitemap.Sitemap.prototype.</span>toString
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sitemap.Sitemap.prototype.toXML">
+            function <span class="apidocSignatureSpan">sitemap.Sitemap.prototype.</span>toXML
+            <span class="apidocSignatureSpan">(callback)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.sitemap.SitemapItem">module sitemap.SitemapItem</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sitemap.SitemapItem.SitemapItem">
+            function <span class="apidocSignatureSpan">sitemap.</span>SitemapItem
+            <span class="apidocSignatureSpan">(conf)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.sitemap.SitemapItem.prototype">module sitemap.SitemapItem.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sitemap.SitemapItem.prototype.toString">
+            function <span class="apidocSignatureSpan">sitemap.SitemapItem.prototype.</span>toString
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sitemap.SitemapItem.prototype.toXML">
+            function <span class="apidocSignatureSpan">sitemap.SitemapItem.prototype.</span>toXML
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.sitemap.errors">module sitemap.errors</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sitemap.errors.ChangeFreqInvalidError">
+            function <span class="apidocSignatureSpan">sitemap.errors.</span>ChangeFreqInvalidError
+            <span class="apidocSignatureSpan">(message)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sitemap.errors.InvalidVideoFormat">
+            function <span class="apidocSignatureSpan">sitemap.errors.</span>InvalidVideoFormat
+            <span class="apidocSignatureSpan">(message)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sitemap.errors.NoURLError">
+            function <span class="apidocSignatureSpan">sitemap.errors.</span>NoURLError
+            <span class="apidocSignatureSpan">(message)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sitemap.errors.NoURLProtocolError">
+            function <span class="apidocSignatureSpan">sitemap.errors.</span>NoURLProtocolError
+            <span class="apidocSignatureSpan">(message)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sitemap.errors.PriorityInvalidError">
+            function <span class="apidocSignatureSpan">sitemap.errors.</span>PriorityInvalidError
+            <span class="apidocSignatureSpan">(message)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sitemap.errors.UndefinedTargetFolder">
+            function <span class="apidocSignatureSpan">sitemap.errors.</span>UndefinedTargetFolder
+            <span class="apidocSignatureSpan">(message)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.sitemap.utils">module sitemap.utils</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sitemap.utils.abort">
+            function <span class="apidocSignatureSpan">sitemap.utils.</span>abort
+            <span class="apidocSignatureSpan">(str)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sitemap.utils.chunkArray">
+            function <span class="apidocSignatureSpan">sitemap.utils.</span>chunkArray
+            <span class="apidocSignatureSpan">(arr, chunkSize)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sitemap.utils.distinctArray">
+            function <span class="apidocSignatureSpan">sitemap.utils.</span>distinctArray
+            <span class="apidocSignatureSpan">(arr)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sitemap.utils.getTimestamp">
+            function <span class="apidocSignatureSpan">sitemap.utils.</span>getTimestamp
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sitemap.utils.getTimestampFromDate">
+            function <span class="apidocSignatureSpan">sitemap.utils.</span>getTimestampFromDate
+            <span class="apidocSignatureSpan">(dt, bRealtime)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sitemap.utils.htmlEscape">
+            function <span class="apidocSignatureSpan">sitemap.utils.</span>htmlEscape
+            <span class="apidocSignatureSpan">(text)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sitemap.utils.lpad">
+            function <span class="apidocSignatureSpan">sitemap.utils.</span>lpad
+            <span class="apidocSignatureSpan">(n, len, chr)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.sitemap" id="apidoc.module.sitemap">module sitemap</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.sitemap.Sitemap" id="apidoc.element.sitemap.Sitemap">
+        function <span class="apidocSignatureSpan">sitemap.</span>Sitemap
+        <span class="apidocSignatureSpan">(urls, hostname, cacheTime, xslUrl, xmlNs)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Sitemap(urls, hostname, cacheTime, xslUrl, xmlNs) {
+
+  // This limit is defined by Google. See:
+  // http://sitemaps.org/protocol.php#index
+  this.limit = 50000
+
+  // Base domain
+  this.hostname = hostname;
+
+  // URL list for sitemap
+  this.urls = [];
+
+  // Make copy of object
+  if (urls) _.extend(this.urls, (urls instanceof Array) ? urls : [urls]);
+
+  // sitemap cache
+  this.cacheResetPeriod = cacheTime || 0;
+  this.cache = &#x27;&#x27;;
+
+  this.xslUrl = xslUrl;
+  this.xmlNs = xmlNs;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sitemap.SitemapItem" id="apidoc.element.sitemap.SitemapItem">
+        function <span class="apidocSignatureSpan">sitemap.</span>SitemapItem
+        <span class="apidocSignatureSpan">(conf)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function SitemapItem(conf) {
+  var conf = conf || {}
+    , is_safe_url = conf[&#x27;safe&#x27;];
+
+  if (!conf[&#x27;url&#x27;]) {
+    throw new err.NoURLError();
+  }
+
+  // URL of the page
+  if(!conf.cdata) {
+    this.loc = safeUrl(conf);
+  } else {
+    this.loc = conf.url;
+  }
+
+  // If given a file to use for last modified date
+  if (conf[&#x27;lastmodfile&#x27;]) {
+    //console.log(&#x27;should read stat from file: &#x27; + conf[&#x27;lastmodfile&#x27;]);
+    var file = conf[&#x27;lastmodfile&#x27;];
+
+    var stat = fs.statSync(file);
+
+    var mtime = stat.mtime;
+
+    var dt = new Date(mtime);
+    this.lastmod = ut.getTimestampFromDate(dt, conf[&#x27;lastmodrealtime&#x27;]);
+
+  }
+  // The date of last modification (YYYY-MM-DD)
+  else if (conf[&#x27;lastmod&#x27;]) {
+    // append the timezone offset so that dates are treated as local time.
+    // Otherwise the Unit tests fail sometimes.
+    var timezoneOffset = &#x27;UTC-&#x27; + (new Date().getTimezoneOffset() / 60) + &#x27;00&#x27;;
+    timezoneOffset = timezoneOffset.replace(&#x27;--&#x27;, &#x27;-&#x27;);
+    var dt = new Date(conf[&#x27;lastmod&#x27;] + &#x27; &#x27; + timezoneOffset);
+    this.lastmod = ut.getTimestampFromDate(dt, conf[&#x27;lastmodrealtime&#x27;]);
+  } else if (conf[&#x27;lastmodISO&#x27;]) {
+    this.lastmod = conf[&#x27;lastmodISO&#x27;];
+  }
+
+  // How frequently the page is likely to change
+  // due to this field is optional no default value is set
+  // please see: http://www.sitemaps.org/protocol.html
+  this.changefreq = conf[&#x27;changefreq&#x27;];
+  if (!is_safe_url &#x26;&#x26; this.changefreq) {
+    if ([&#x27;always&#x27;, &#x27;hourly&#x27;, &#x27;daily&#x27;, &#x27;weekly&#x27;, &#x27;monthly&#x27;,
+        &#x27;yearly&#x27;, &#x27;never&#x27;].indexOf(this.changefreq) === -1) {
+      throw new err.ChangeFreqInvalidError();
+    }
+  }
+
+  // The priority of this URL relative to other URLs
+  // due to this field is optional no default value is set
+  // please see: http://www.sitemaps.org/protocol.html
+  this.priority = conf[&#x27;priority&#x27;];
+  if (!is_safe_url &#x26;&#x26; this.priority) {
+    if (!(this.priority &#x3e;= 0.0 &#x26;&#x26; this.priority &#x3c;= 1.0) || typeof this.priority !== &#x27;number&#x27;) {
+      throw new err.PriorityInvalidError();
+    }
+  }
+
+  this.news = conf[&#x27;news&#x27;] || null;
+  this.img = conf[&#x27;img&#x27;] || null;
+  this.links = conf[&#x27;links&#x27;] || null;
+  this.expires = conf[&#x27;expires&#x27;] || null;
+  this.androidLink = conf[&#x27;androidLink&#x27;] || null;
+  this.mobile = conf[&#x27;mobile&#x27;] || null;
+  this.video = conf[&#x27;video&#x27;] || null;
+  this.ampLink = conf[&#x27;ampLink&#x27;] || null;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sitemap.buildSitemapIndex" id="apidoc.element.sitemap.buildSitemapIndex">
+        function <span class="apidocSignatureSpan">sitemap.</span>buildSitemapIndex
+        <span class="apidocSignatureSpan">(conf)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function buildSitemapIndex(conf) {
+  var xml = [];
+
+  xml.push(&#x27;&#x3c;?xml version=&#x22;1.0&#x22; encoding=&#x22;UTF-8&#x22;?&#x3e;&#x27;);
+  if (conf.xslUrl) {
+    xml.push(&#x27;&#x3c;?xml-stylesheet type=&#x22;text/xsl&#x22; href=&#x22;&#x27; + conf.xslUrl + &#x27;&#x22;?&#x3e;&#x27;);
+  }
+  if(!conf.xmlNs) {
+    xml.push(&#x27;&#x3c;sitemapindex xmlns=&#x22;http://www.sitemaps.org/schemas/sitemap/0.9&#x22; &#x27; +
+      &#x27;xmlns:mobile=&#x22;http://www.google.com/schemas/sitemap-mobile/1.0&#x22; &#x27; +
+      &#x27;xmlns:image=&#x22;http://www.google.com/schemas/sitemap-image/1.1&#x22; &#x27; +
+      &#x27;xmlns:video=&#x22;http://www.google.com/schemas/sitemap-video/1.1&#x22;&#x3e;&#x27;);
+  } else {
+    xml.push(&#x27;&#x3c;sitemapindex &#x27; + conf.xmlNs + &#x27;&#x3e;&#x27;)
+  }
+
+
+  conf.urls.forEach(function (url) {
+    xml.push(&#x27;&#x3c;sitemap&#x3e;&#x27;);
+    xml.push(&#x27;&#x3c;loc&#x3e;&#x27; + url + &#x27;&#x3c;/loc&#x3e;&#x27;);
+    xml.push(&#x27;&#x3c;/sitemap&#x3e;&#x27;);
+  });
+
+  xml.push(&#x27;&#x3c;/sitemapindex&#x3e;&#x27;);
+
+  return xml.join(&#x27;\n&#x27;);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    });
+```
+
+### Example of Sitemap Index as String
+
+```javascript
+var sm = require(&#x27;sitemap&#x27;)
+  , smi = sm.<span class="apidocCodeKeywordSpan">buildSitemapIndex</span>({
+      urls: [&#x27;https://example.com/sitemap1.xml&#x27;, &#x27;https://example.com/sitemap2.xml&#x27;]
+      xslUrl: &#x27;https://example.com/style.xsl&#x27; // optional
+    });
+```
+
+### Example of Sitemap Index
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sitemap.createSitemap" id="apidoc.element.sitemap.createSitemap">
+        function <span class="apidocSignatureSpan">sitemap.</span>createSitemap
+        <span class="apidocSignatureSpan">(conf)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function createSitemap(conf) {
+  return new Sitemap(conf.urls, conf.hostname, conf.cacheTime, conf.xslUrl, conf.xmlNs);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+Usage
+-----
+The main functions you want to use in the sitemap module are
+
+```javascript
+var sm = require(&#x27;sitemap&#x27;)
+// Creates a sitemap object given the input configuration with URLs
+var sitemap = sm.<span class="apidocCodeKeywordSpan">createSitemap</span>({ options });
+// Generates XML with a callback function
+sitemap.toXML( function(err, xml){ if (!err){ console.log(xml) } });
+// Gives you a string containing the XML data
+var xml = sitemap.toString();
+```
+
+### Example of using sitemap.js with [express](https://github.com/visionmedia/express):
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sitemap.createSitemapIndex" id="apidoc.element.sitemap.createSitemapIndex">
+        function <span class="apidocSignatureSpan">sitemap.</span>createSitemapIndex
+        <span class="apidocSignatureSpan">(conf)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function createSitemapIndex(conf) {
+  return new SitemapIndex(conf.urls,
+    conf.targetFolder,
+    conf.hostname,
+    conf.cacheTime,
+    conf.sitemapName,
+    conf.sitemapSize,
+    conf.xslUrl,
+    conf.gzip,
+    conf.callback);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  });
+```
+
+### Example of Sitemap Index
+
+```javascript
+var sm = require(&#x27;sitemap&#x27;)
+, smi = sm.<span class="apidocCodeKeywordSpan">createSitemapIndex</span>({
+    cacheTime: 600000,
+    hostname: &#x27;http://www.sitemap.org&#x27;,
+    sitemapName: &#x27;sm-test&#x27;,
+    sitemapSize: 1,
+    targetFolder: require(&#x27;os&#x27;).tmpdir(),
+    urls: [&#x27;http://ya.ru&#x27;, &#x27;http://ya2.ru&#x27;]
+    // optional:
+...</pre></li>
+    </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.sitemap.Sitemap" id="apidoc.module.sitemap.Sitemap">module sitemap.Sitemap</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.sitemap.Sitemap.Sitemap" id="apidoc.element.sitemap.Sitemap.Sitemap">
+        function <span class="apidocSignatureSpan">sitemap.</span>Sitemap
+        <span class="apidocSignatureSpan">(urls, hostname, cacheTime, xslUrl, xmlNs)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Sitemap(urls, hostname, cacheTime, xslUrl, xmlNs) {
+
+  // This limit is defined by Google. See:
+  // http://sitemaps.org/protocol.php#index
+  this.limit = 50000
+
+  // Base domain
+  this.hostname = hostname;
+
+  // URL list for sitemap
+  this.urls = [];
+
+  // Make copy of object
+  if (urls) _.extend(this.urls, (urls instanceof Array) ? urls : [urls]);
+
+  // sitemap cache
+  this.cacheResetPeriod = cacheTime || 0;
+  this.cache = &#x27;&#x27;;
+
+  this.xslUrl = xslUrl;
+  this.xmlNs = xmlNs;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.sitemap.Sitemap.prototype" id="apidoc.module.sitemap.Sitemap.prototype">module sitemap.Sitemap.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.sitemap.Sitemap.prototype.add" id="apidoc.element.sitemap.Sitemap.prototype.add">
+        function <span class="apidocSignatureSpan">sitemap.Sitemap.prototype.</span>add
+        <span class="apidocSignatureSpan">(url)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">add = function (url) {
+  return this.urls.push(url);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+### Example of dynamic page manipulations into sitemap:
+
+```javascript
+var sitemap = sm.createSitemap ({
+      hostname: &#x27;http://example.com&#x27;,
+      cacheTime: 600000
+    });
+sitemap.<span class="apidocCodeKeywordSpan">add</span>({url: &#x27;/page-1/&#x27;});
+sitemap.add({url: &#x27;/page-2/&#x27;, changefreq: &#x27;monthly&#x27;, priority: 0.7});
+sitemap.del({url: &#x27;/page-2/&#x27;});
+sitemap.del(&#x27;/page-1/&#x27;);
+```
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sitemap.Sitemap.prototype.clearCache" id="apidoc.element.sitemap.Sitemap.prototype.clearCache">
+        function <span class="apidocSignatureSpan">sitemap.Sitemap.prototype.</span>clearCache
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">clearCache = function () {
+  this.cache = &#x27;&#x27;;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sitemap.Sitemap.prototype.del" id="apidoc.element.sitemap.Sitemap.prototype.del">
+        function <span class="apidocSignatureSpan">sitemap.Sitemap.prototype.</span>del
+        <span class="apidocSignatureSpan">(url)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">del = function (url) {
+  var index_to_remove = [],
+    key = &#x27;&#x27;,
+    self = this;
+
+  if (typeof url == &#x27;string&#x27;) {
+    key = url;
+  } else {
+    key = url[&#x27;url&#x27;];
+  }
+
+  // find
+  this.urls.forEach(function (elem, index) {
+    if (typeof elem == &#x27;string&#x27;) {
+      if (elem == key) {
+        index_to_remove.push(index);
+      }
+    } else {
+      if (elem[&#x27;url&#x27;] == key) {
+        index_to_remove.push(index);
+      }
+    }
+  });
+
+  // delete
+  index_to_remove.forEach(function (elem) {
+    self.urls.splice(elem, 1);
+  });
+
+  return index_to_remove.length;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+```javascript
+var sitemap = sm.createSitemap ({
+      hostname: &#x27;http://example.com&#x27;,
+      cacheTime: 600000
+    });
+sitemap.add({url: &#x27;/page-1/&#x27;});
+sitemap.add({url: &#x27;/page-2/&#x27;, changefreq: &#x27;monthly&#x27;, priority: 0.7});
+sitemap.<span class="apidocCodeKeywordSpan">del</span>({url: &#x27;/page-2/&#x27;});
+sitemap.del(&#x27;/page-1/&#x27;);
+```
+
+
+
+### Example of pre-generating sitemap based on existing static files:
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sitemap.Sitemap.prototype.isCacheValid" id="apidoc.element.sitemap.Sitemap.prototype.isCacheValid">
+        function <span class="apidocSignatureSpan">sitemap.Sitemap.prototype.</span>isCacheValid
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">isCacheValid = function () {
+  var currTimestamp = ut.getTimestamp();
+  return this.cacheResetPeriod &#x26;&#x26; this.cache &#x26;&#x26;
+    (this.cacheSetTimestamp + this.cacheResetPeriod) &#x3e;= currTimestamp;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sitemap.Sitemap.prototype.setCache" id="apidoc.element.sitemap.Sitemap.prototype.setCache">
+        function <span class="apidocSignatureSpan">sitemap.Sitemap.prototype.</span>setCache
+        <span class="apidocSignatureSpan">(newCache)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">setCache = function (newCache) {
+  this.cache = newCache;
+  this.cacheSetTimestamp = ut.getTimestamp();
+  return this.cache;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sitemap.Sitemap.prototype.toGzip" id="apidoc.element.sitemap.Sitemap.prototype.toGzip">
+        function <span class="apidocSignatureSpan">sitemap.Sitemap.prototype.</span>toGzip
+        <span class="apidocSignatureSpan">(callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">toGzip = function (callback) {
+  var zlib = require(&#x27;zlib&#x27;);
+
+  if (typeof callback === &#x27;function&#x27;) {
+    zlib.gzip(this.toString(), callback);
+  } else {
+    return zlib.gzipSync(this.toString());
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sitemap.Sitemap.prototype.toString" id="apidoc.element.sitemap.Sitemap.prototype.toString">
+        function <span class="apidocSignatureSpan">sitemap.Sitemap.prototype.</span>toString
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">toString = function () {
+  var self = this, xml;
+  if(!self.xmlNs) {
+      xml = [&#x27;&#x3c;?xml version=&#x22;1.0&#x22; encoding=&#x22;UTF-8&#x22;?&#x3e;&#x27;,
+      &#x27;&#x3c;urlset xmlns=&#x22;http://www.sitemaps.org/schemas/sitemap/0.9&#x22; &#x27; +
+      &#x27;xmlns:news=&#x22;http://www.google.com/schemas/sitemap-news/0.9&#x22; &#x27; +
+      &#x27;xmlns:xhtml=&#x22;http://www.w3.org/1999/xhtml&#x22; &#x27; +
+      &#x27;xmlns:mobile=&#x22;http://www.google.com/schemas/sitemap-mobile/1.0&#x22; &#x27; +
+      &#x27;xmlns:image=&#x22;http://www.google.com/schemas/sitemap-image/1.1&#x22; &#x27; +
+      &#x27;xmlns:video=&#x22;http://www.google.com/schemas/sitemap-video/1.1&#x22;&#x3e;&#x27;
+    ];
+  } else {
+    xml = [&#x27;&#x3c;?xml version=&#x22;1.0&#x22; encoding=&#x22;UTF-8&#x22;?&#x3e;&#x27;, &#x27;&#x3c;urlset &#x27;+ this.xmlNs + &#x27;&#x3e;&#x27;]
+  }
+
+  if (self.xslUrl) {
+    xml.splice(1, 0,
+      &#x27;&#x3c;?xml-stylesheet type=&#x22;text/xsl&#x22; href=&#x22;&#x27; + self.xslUrl + &#x27;&#x22;?&#x3e;&#x27;);
+  }
+
+  if (self.isCacheValid()) {
+    return self.cache;
+  }
+
+  // TODO: if size &#x3e; limit: create sitemapindex
+
+  self.urls.forEach(function (elem, index) {
+    // SitemapItem
+    var smi = elem;
+
+    // create object with url property
+    if (typeof elem == &#x27;string&#x27;) {
+      smi = {&#x27;url&#x27;: elem};
+    }
+    // insert domain name
+    if (self.hostname) {
+      if (!reProto.test(smi.url)) {
+        smi.url = urljoin(self.hostname, smi.url);
+      }
+      if (smi.img) {
+        if (typeof smi.img == &#x27;string&#x27;) {
+          // string -&#x3e; array of objects
+          smi.img = [{url: smi.img}];
+        }
+        if (typeof smi.img == &#x27;object&#x27; &#x26;&#x26; smi.img.length == undefined) {
+          // object -&#x3e; array of objects
+          smi.img = [smi.img];
+        }
+        // prepend hostname to all image urls
+        smi.img.forEach(function (img) {
+          if (!reProto.test(img.url)) {
+            img.url = urljoin(self.hostname, img.url);
+          }
+        });
+      }
+      if (smi.links) {
+        smi.links.forEach(function (link) {
+          if (!reProto.test(link.url)) {
+            link.url = urljoin(self.hostname, link.url);
+          }
+        });
+      }
+    }
+    xml.push(new SitemapItem(smi));
+  });
+  // close xml
+  xml.push(&#x27;&#x3c;/urlset&#x3e;&#x27;);
+
+  return self.setCache(xml.join(&#x27;\n&#x27;));
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+```javascript
+var sm = require(&#x27;sitemap&#x27;)
+// Creates a sitemap object given the input configuration with URLs
+var sitemap = sm.createSitemap({ options });
+// Generates XML with a callback function
+sitemap.toXML( function(err, xml){ if (!err){ console.log(xml) } });
+// Gives you a string containing the XML data
+var xml = sitemap.<span class="apidocCodeKeywordSpan">toString</span>();
+```
+
+### Example of using sitemap.js with [express](https://github.com/visionmedia/express):
+
+```javascript
+var express = require(&#x27;express&#x27;)
+, sm = require(&#x27;sitemap&#x27;);
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sitemap.Sitemap.prototype.toXML" id="apidoc.element.sitemap.Sitemap.prototype.toXML">
+        function <span class="apidocSignatureSpan">sitemap.Sitemap.prototype.</span>toXML
+        <span class="apidocSignatureSpan">(callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">toXML = function (callback) {
+  if (typeof callback === &#x27;undefined&#x27;) {
+    return this.toString();
+  }
+  var self = this;
+  process.nextTick(function () {
+    try {
+      return callback(null, self.toString());
+    } catch (err) {
+      return callback(err);
+    }
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+The main functions you want to use in the sitemap module are
+
+```javascript
+var sm = require(&#x27;sitemap&#x27;)
+// Creates a sitemap object given the input configuration with URLs
+var sitemap = sm.createSitemap({ options });
+// Generates XML with a callback function
+sitemap.<span class="apidocCodeKeywordSpan">toXML</span>( function(err, xml){ if (!err){ console.log(xml) } });
+// Gives you a string containing the XML data
+var xml = sitemap.toString();
+```
+
+### Example of using sitemap.js with [express](https://github.com/visionmedia/express):
+
+```javascript
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.sitemap.SitemapItem" id="apidoc.module.sitemap.SitemapItem">module sitemap.SitemapItem</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.sitemap.SitemapItem.SitemapItem" id="apidoc.element.sitemap.SitemapItem.SitemapItem">
+        function <span class="apidocSignatureSpan">sitemap.</span>SitemapItem
+        <span class="apidocSignatureSpan">(conf)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function SitemapItem(conf) {
+  var conf = conf || {}
+    , is_safe_url = conf[&#x27;safe&#x27;];
+
+  if (!conf[&#x27;url&#x27;]) {
+    throw new err.NoURLError();
+  }
+
+  // URL of the page
+  if(!conf.cdata) {
+    this.loc = safeUrl(conf);
+  } else {
+    this.loc = conf.url;
+  }
+
+  // If given a file to use for last modified date
+  if (conf[&#x27;lastmodfile&#x27;]) {
+    //console.log(&#x27;should read stat from file: &#x27; + conf[&#x27;lastmodfile&#x27;]);
+    var file = conf[&#x27;lastmodfile&#x27;];
+
+    var stat = fs.statSync(file);
+
+    var mtime = stat.mtime;
+
+    var dt = new Date(mtime);
+    this.lastmod = ut.getTimestampFromDate(dt, conf[&#x27;lastmodrealtime&#x27;]);
+
+  }
+  // The date of last modification (YYYY-MM-DD)
+  else if (conf[&#x27;lastmod&#x27;]) {
+    // append the timezone offset so that dates are treated as local time.
+    // Otherwise the Unit tests fail sometimes.
+    var timezoneOffset = &#x27;UTC-&#x27; + (new Date().getTimezoneOffset() / 60) + &#x27;00&#x27;;
+    timezoneOffset = timezoneOffset.replace(&#x27;--&#x27;, &#x27;-&#x27;);
+    var dt = new Date(conf[&#x27;lastmod&#x27;] + &#x27; &#x27; + timezoneOffset);
+    this.lastmod = ut.getTimestampFromDate(dt, conf[&#x27;lastmodrealtime&#x27;]);
+  } else if (conf[&#x27;lastmodISO&#x27;]) {
+    this.lastmod = conf[&#x27;lastmodISO&#x27;];
+  }
+
+  // How frequently the page is likely to change
+  // due to this field is optional no default value is set
+  // please see: http://www.sitemaps.org/protocol.html
+  this.changefreq = conf[&#x27;changefreq&#x27;];
+  if (!is_safe_url &#x26;&#x26; this.changefreq) {
+    if ([&#x27;always&#x27;, &#x27;hourly&#x27;, &#x27;daily&#x27;, &#x27;weekly&#x27;, &#x27;monthly&#x27;,
+        &#x27;yearly&#x27;, &#x27;never&#x27;].indexOf(this.changefreq) === -1) {
+      throw new err.ChangeFreqInvalidError();
+    }
+  }
+
+  // The priority of this URL relative to other URLs
+  // due to this field is optional no default value is set
+  // please see: http://www.sitemaps.org/protocol.html
+  this.priority = conf[&#x27;priority&#x27;];
+  if (!is_safe_url &#x26;&#x26; this.priority) {
+    if (!(this.priority &#x3e;= 0.0 &#x26;&#x26; this.priority &#x3c;= 1.0) || typeof this.priority !== &#x27;number&#x27;) {
+      throw new err.PriorityInvalidError();
+    }
+  }
+
+  this.news = conf[&#x27;news&#x27;] || null;
+  this.img = conf[&#x27;img&#x27;] || null;
+  this.links = conf[&#x27;links&#x27;] || null;
+  this.expires = conf[&#x27;expires&#x27;] || null;
+  this.androidLink = conf[&#x27;androidLink&#x27;] || null;
+  this.mobile = conf[&#x27;mobile&#x27;] || null;
+  this.video = conf[&#x27;video&#x27;] || null;
+  this.ampLink = conf[&#x27;ampLink&#x27;] || null;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.sitemap.SitemapItem.prototype" id="apidoc.module.sitemap.SitemapItem.prototype">module sitemap.SitemapItem.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.sitemap.SitemapItem.prototype.toString" id="apidoc.element.sitemap.SitemapItem.prototype.toString">
+        function <span class="apidocSignatureSpan">sitemap.SitemapItem.prototype.</span>toString
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">toString = function () {
+  // result xml
+  var xml = &#x27;&#x3c;url&#x3e; {loc} {img} {video} {lastmod} {changefreq} {priority} {links} {expires} {androidLink} {mobile} {news} {ampLink
+}&#x3c;/url&#x3e;&#x27;
+  // xml property
+    , props = [&#x27;loc&#x27;, &#x27;img&#x27;, &#x27;video&#x27;, &#x27;lastmod&#x27;, &#x27;changefreq&#x27;, &#x27;priority&#x27;, &#x27;links&#x27;, &#x27;expires&#x27;, &#x27;androidLink&#x27;, &#x27;mobile&#x27;, &#x27;news&#x27;, &#x27;
+ampLink&#x27;]
+  // property array size (for loop)
+    , ps = props.length
+  // current property name (for loop)
+    , p;
+
+  while (ps--) {
+    p = props[ps];
+
+    if (this[p] &#x26;&#x26; p == &#x27;img&#x27;) {
+      var imagexml = &#x27;&#x27;;
+      // Image handling
+      if (typeof(this[p]) != &#x27;object&#x27; || this[p].length == undefined) {
+        // make it an array
+        this[p] = [this[p]];
+      }
+      this[p].forEach(function (image) {
+        if(typeof(image) != &#x27;object&#x27;) {
+          // it’s a string
+          // make it an object
+          image = {url: image};
+        }
+        var caption = image.caption ? &#x27;&#x3c;image:caption&#x3e;&#x3c;![CDATA[&#x27;+image.caption+&#x27;]]&#x3e;&#x3c;/image:caption&#x3e;&#x27; : &#x27;&#x27;;
+        var geoLocation = image.geoLocation ? &#x27;&#x3c;image:geo_location&#x3e;&#x27;+image.geoLocation+&#x27;&#x3c;/image:geo_location&#x3e;&#x27; : &#x27;&#x27;;
+        var title = image.title ? &#x27;&#x3c;image:title&#x3e;&#x3c;![CDATA[&#x27;+image.title+&#x27;]]&#x3e;&#x3c;/image:title&#x3e;&#x27; : &#x27;&#x27;;
+        var license = image.license ? &#x27;&#x3c;image:license&#x3e;&#x27;+image.license+&#x27;&#x3c;/image:license&#x3e;&#x27; : &#x27;&#x27;;
+
+        imagexml += &#x27;&#x3c;image:image&#x3e;&#x3c;image:loc&#x3e;&#x27; + image.url + &#x27;&#x3c;/image:loc&#x3e;&#x27; + caption + geoLocation + title + license + &#x27;&#x3c;/image
+:image&#x3e; &#x27;;
+      });
+
+      xml = xml.replace(&#x27;{&#x27; + p + &#x27;}&#x27;, imagexml);
+
+    } else if (this[p] &#x26;&#x26; p == &#x27;video&#x27;) {
+      var videoxml = &#x27;&#x27;;
+      // Image handling
+      if (typeof(this[p]) != &#x27;object&#x27; || this[p].length == undefined) {
+        // make it an array
+        this[p] = [this[p]];
+      }
+      this[p].forEach(function (video) {
+        if(typeof(video) != &#x27;object&#x27; || !video.thumbnail_loc || !video.title || !video.description) {
+          // has to be an object and include required categories https://developers.google.com/webmasters/videosearch/sitemaps
+          throw new err.InvalidVideoFormat();
+        }
+        videoxml += &#x27;&#x3c;video:video&#x3e;&#x27; +
+          &#x27;&#x3c;video:thumbnail_loc&#x3e;&#x27; + video.thumbnail_loc + &#x27;&#x3c;/video:thumbnail_loc&#x3e;&#x27; +
+          &#x27;&#x3c;video:title&#x3e;&#x3c;![CDATA[&#x27; + video.title + &#x27;]]&#x3e;&#x3c;/video:title&#x3e;&#x27; +
+          &#x27;&#x3c;video:description&#x3e;&#x3c;![CDATA[&#x27; + video.description + &#x27;]]&#x3e;&#x3c;/video:description&#x3e;&#x27;;
+        if (video.content_loc)
+          videoxml += &#x27;&#x3c;video:content_loc&#x3e;&#x27; + video.content_loc + &#x27;&#x3c;/video:content_loc&#x3e;&#x27;;
+        if (video.player_loc)
+          videoxml += &#x27;&#x3c;video:player_loc&#x3e;&#x27; + video.player_loc + &#x27;&#x3c;/video:player_loc&#x3e;&#x27;;
+        if (video.duration)
+          videoxml += &#x27;&#x3c;video:duration&#x3e;&#x27; + video.duration + &#x27;&#x3c;/video:duration&#x3e;&#x27;;
+        if (video.expiration_date)
+          videoxml += &#x27;&#x3c;video:expiration_date&#x3e;&#x27; + video.expiration_date + &#x27;&#x3c;/video:expiration_date&#x3e;&#x27;;
+        if (video.rating)
+          videoxml += &#x27;&#x3c;video:rating&#x3e;&#x27; + video.rating + &#x27;&#x3c;/video:rating&#x3e;&#x27;;
+        if (video.view_count)
+          videoxml += &#x27;&#x3c;video:view_count&#x3e;&#x27; + video.view_count + &#x27;&#x3c;/video:view_count&#x3e;&#x27;;
+        if (video.publication_date)
+          videoxml += &#x27;&#x3c;video:publication_date&#x3e;&#x27; + video.publication_date + &#x27;&#x3c;/video:publication_date&#x3e;&#x27;;
+        if (video.family_friendly)
+          videoxml += &#x27;&#x3c;video:family_friendly&#x3e;&#x27; + video.family_friendly + &#x27;&#x3c;/video:family_friendly&#x3e;&#x27;;
+        if (video.tag)
+          videoxml += &#x27;&#x3c;video:tag&#x3e;&#x27; + video.tag + &#x27;&#x3c;/video:tag&#x3e;&#x27;;
+        if (video.category)
+          videoxml += &#x27;&#x3c;video:category&#x3e;&#x27; + video.category + &#x27;&#x3c;/video:category&#x3e;&#x27;;
+        if (video.restriction)
+          videoxml += &#x27;&#x3c;video:restriction&#x3e;&#x27; + video.restriction + &#x27;&#x3c;/video:restriction&#x3e;&#x27;;
+        if (video.gallery_loc)
+          videoxml += &#x27;&#x3c;video:gallery_loc&#x3e;&#x27; + video.gallery_loc + &#x27;&#x3c;/video:gallery_loc&#x3e;&#x27;;
+        if (video.price)
+          videoxml += &#x27;&#x3c;video:price&#x3e;&#x27; + video.price + &#x27;&#x3c;/video:price&#x3e;&#x27;;
+        if (video.requires_subscription)
+          videoxml += &#x27;&#x3c;video:requires_subscription&#x3e;&#x27; + video.requires_subscription + &#x27;&#x3c;/video:requires_subscription&#x3e;&#x27;;
+        if (video.uploader)
+          videoxml += &#x27;&#x3c;video:uploader&#x3e;&#x27; + video.uploader + ...</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+```javascript
+var sm = require(&#x27;sitemap&#x27;)
+// Creates a sitemap object given the input configuration with URLs
+var sitemap = sm.createSitemap({ options });
+// Generates XML with a callback function
+sitemap.toXML( function(err, xml){ if (!err){ console.log(xml) } });
+// Gives you a string containing the XML data
+var xml = sitemap.<span class="apidocCodeKeywordSpan">toString</span>();
+```
+
+### Example of using sitemap.js with [express](https://github.com/visionmedia/express):
+
+```javascript
+var express = require(&#x27;express&#x27;)
+, sm = require(&#x27;sitemap&#x27;);
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sitemap.SitemapItem.prototype.toXML" id="apidoc.element.sitemap.SitemapItem.prototype.toXML">
+        function <span class="apidocSignatureSpan">sitemap.SitemapItem.prototype.</span>toXML
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">toXML = function () {
+  return this.toString();
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+The main functions you want to use in the sitemap module are
+
+```javascript
+var sm = require(&#x27;sitemap&#x27;)
+// Creates a sitemap object given the input configuration with URLs
+var sitemap = sm.createSitemap({ options });
+// Generates XML with a callback function
+sitemap.<span class="apidocCodeKeywordSpan">toXML</span>( function(err, xml){ if (!err){ console.log(xml) } });
+// Gives you a string containing the XML data
+var xml = sitemap.toString();
+```
+
+### Example of using sitemap.js with [express](https://github.com/visionmedia/express):
+
+```javascript
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.sitemap.errors" id="apidoc.module.sitemap.errors">module sitemap.errors</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.sitemap.errors.ChangeFreqInvalidError" id="apidoc.element.sitemap.errors.ChangeFreqInvalidError">
+        function <span class="apidocSignatureSpan">sitemap.errors.</span>ChangeFreqInvalidError
+        <span class="apidocSignatureSpan">(message)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">ChangeFreqInvalidError = function (message) {
+  this.name = &#x27;ChangeFreqInvalidError&#x27;;
+  this.message = message || &#x27;changefreq is invalid&#x27;;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sitemap.errors.InvalidVideoFormat" id="apidoc.element.sitemap.errors.InvalidVideoFormat">
+        function <span class="apidocSignatureSpan">sitemap.errors.</span>InvalidVideoFormat
+        <span class="apidocSignatureSpan">(message)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">InvalidVideoFormat = function (message) {
+  this.name = &#x27;InvalidVideoFormat&#x27;;
+  this.message = message || &#x27;must include thumbnail_loc, title and description fields for videos &#x27;;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sitemap.errors.NoURLError" id="apidoc.element.sitemap.errors.NoURLError">
+        function <span class="apidocSignatureSpan">sitemap.errors.</span>NoURLError
+        <span class="apidocSignatureSpan">(message)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">NoURLError = function (message) {
+  this.name = &#x27;NoURLError&#x27;;
+  this.message = message || &#x27;URL is required&#x27;;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sitemap.errors.NoURLProtocolError" id="apidoc.element.sitemap.errors.NoURLProtocolError">
+        function <span class="apidocSignatureSpan">sitemap.errors.</span>NoURLProtocolError
+        <span class="apidocSignatureSpan">(message)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">NoURLProtocolError = function (message) {
+  this.name = &#x27;NoURLProtocolError&#x27;;
+  this.message = message || &#x27;Protocol is required&#x27;;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sitemap.errors.PriorityInvalidError" id="apidoc.element.sitemap.errors.PriorityInvalidError">
+        function <span class="apidocSignatureSpan">sitemap.errors.</span>PriorityInvalidError
+        <span class="apidocSignatureSpan">(message)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">PriorityInvalidError = function (message) {
+  this.name = &#x27;PriorityInvalidError&#x27;;
+  this.message = message || &#x27;priority is invalid&#x27;;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sitemap.errors.UndefinedTargetFolder" id="apidoc.element.sitemap.errors.UndefinedTargetFolder">
+        function <span class="apidocSignatureSpan">sitemap.errors.</span>UndefinedTargetFolder
+        <span class="apidocSignatureSpan">(message)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">UndefinedTargetFolder = function (message) {
+  this.name = &#x27;UndefinedTargetFolder&#x27;;
+  this.message = message || &#x27;Target folder must exist&#x27;;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.sitemap.utils" id="apidoc.module.sitemap.utils">module sitemap.utils</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.sitemap.utils.abort" id="apidoc.element.sitemap.utils.abort">
+        function <span class="apidocSignatureSpan">sitemap.utils.</span>abort
+        <span class="apidocSignatureSpan">(str)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">abort = function (str) {
+  console.error(str);
+  process.exit(1);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sitemap.utils.chunkArray" id="apidoc.element.sitemap.utils.chunkArray">
+        function <span class="apidocSignatureSpan">sitemap.utils.</span>chunkArray
+        <span class="apidocSignatureSpan">(arr, chunkSize)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">chunkArray = function (arr, chunkSize) {
+  var lists = _.groupBy(arr, function (element, index) {
+    return Math.floor(index / chunkSize);
+  });
+  lists = _.toArray(lists);
+  return lists;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sitemap.utils.distinctArray" id="apidoc.element.sitemap.utils.distinctArray">
+        function <span class="apidocSignatureSpan">sitemap.utils.</span>distinctArray
+        <span class="apidocSignatureSpan">(arr)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">distinctArray = function (arr) {
+  var hash = {}
+    , res = []
+    , arr_length = arr.length;
+  while (arr_length--) {
+    hash[arr[arr_length]] = true;
+  }
+  for (key in hash) {
+    res.push(key);
+  }
+  return res;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sitemap.utils.getTimestamp" id="apidoc.element.sitemap.utils.getTimestamp">
+        function <span class="apidocSignatureSpan">sitemap.utils.</span>getTimestamp
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">getTimestamp = function () {
+  return (new Date()).getTime();
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sitemap.utils.getTimestampFromDate" id="apidoc.element.sitemap.utils.getTimestampFromDate">
+        function <span class="apidocSignatureSpan">sitemap.utils.</span>getTimestampFromDate
+        <span class="apidocSignatureSpan">(dt, bRealtime)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">getTimestampFromDate = function (dt, bRealtime) {
+  var timestamp = [dt.getUTCFullYear(), exports.lpad(dt.getUTCMonth() + 1, 2),
+    exports.lpad(dt.getUTCDate(), 2)].join(&#x27;-&#x27;);
+
+  // Indicate that lastmod should include minutes and seconds (and timezone)
+  if (bRealtime &#x26;&#x26; bRealtime === true) {
+    timestamp += &#x27;T&#x27;;
+    timestamp += [exports.lpad(dt.getUTCHours(), 2),
+      exports.lpad(dt.getUTCMinutes(), 2),
+      exports.lpad(dt.getUTCSeconds(), 2)
+    ].join(&#x27;:&#x27;);
+    timestamp += &#x27;Z&#x27;;
+  }
+
+  return timestamp;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sitemap.utils.htmlEscape" id="apidoc.element.sitemap.utils.htmlEscape">
+        function <span class="apidocSignatureSpan">sitemap.utils.</span>htmlEscape
+        <span class="apidocSignatureSpan">(text)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">htmlEscape = function (text) {
+  return text.replace(/&#x26;/g, &#x27;&#x26;amp;&#x27;).replace(/&#x3c;/g, &#x27;&#x26;lt;&#x27;).replace(/&#x3e;/g, &#x27;&#x26;gt;&#x27;).replace(/&#x22;/g, &#x27;&#x26;quot;&#x27;).replace(/&#x27;/g, &#x27;&#x26;#039;&#x27;);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.sitemap.utils.lpad" id="apidoc.element.sitemap.utils.lpad">
+        function <span class="apidocSignatureSpan">sitemap.utils.</span>lpad
+        <span class="apidocSignatureSpan">(n, len, chr)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">lpad = function (n, len, chr) {
+  var res = n.toString()
+    , chr = chr || &#x27;0&#x27;
+    , leading = (res.substr(0, 1) === &#x27;-&#x27;);
+
+  //If left side of string is a minus sign (negative number), we want to ignore that in the padding process
+  if (leading) {
+    res = res.substr(1); //cut-off the leading &#x27;-&#x27;
+  }
+
+  while (res.length &#x3c; len) {
+    res = chr + res;
+  }
+
+  if (leading) { //If we initially cutoff the leading &#x27;-&#x27;, we add it again here
+    res = &#x27;-&#x27; + res;
+  }
+
+  return res;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
