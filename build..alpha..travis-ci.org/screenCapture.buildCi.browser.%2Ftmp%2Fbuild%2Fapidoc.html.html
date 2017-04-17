@@ -1,4 +1,4 @@
-<div class="apidocDiv">
+<html><head></head><body><div class="apidocDiv">
 <style>
 /*csslint
 */
@@ -47,17 +47,10 @@
 }
 </style>
 <h1>api documentation for
-    <a
-
-        href="https://github.com/ekalinin/sitemap.js#readme"
-
-    >sitemap (v1.12.0)</a>
+    <a href="https://github.com/ekalinin/sitemap.js#readme">sitemap (v1.12.0)</a>
 </h1>
 <h4>Sitemap-generating framework</h4>
-<div class="apidocSectionDiv"><a
-    href="#apidoc.tableOfContents"
-    id="apidoc.tableOfContents"
-><h1>table of contents</h1></a><ol>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
 
     <li class="apidocModuleLi"><a href="#apidoc.module.sitemap">module sitemap</a><ol>
 
@@ -962,7 +955,7 @@
 
   // sitemap cache
   this.cacheResetPeriod = cacheTime || 0;
-  this.cache = &#x27;&#x27;;
+  this.cache = '';
 
   this.xslUrl = xslUrl;
   this.xmlNs = xmlNs;
@@ -995,7 +988,7 @@
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">Sitemap.prototype.clearCache = function () {
-  this.cache = &#x27;&#x27;;
+  this.cache = '';
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -1011,23 +1004,23 @@
     <ul>
     <li>description and source-code<pre class="apidocCodePre">Sitemap.prototype.del = function (url) {
   var index_to_remove = [],
-    key = &#x27;&#x27;,
+    key = '',
     self = this;
 
-  if (typeof url == &#x27;string&#x27;) {
+  if (typeof url == 'string') {
     key = url;
   } else {
-    key = url[&#x27;url&#x27;];
+    key = url['url'];
   }
 
   // find
   this.urls.forEach(function (elem, index) {
-    if (typeof elem == &#x27;string&#x27;) {
+    if (typeof elem == 'string') {
       if (elem == key) {
         index_to_remove.push(index);
       }
     } else {
-      if (elem[&#x27;url&#x27;] == key) {
+      if (elem['url'] == key) {
         index_to_remove.push(index);
       }
     }
@@ -1054,8 +1047,8 @@
     <ul>
     <li>description and source-code<pre class="apidocCodePre">Sitemap.prototype.isCacheValid = function () {
   var currTimestamp = ut.getTimestamp();
-  return this.cacheResetPeriod &#x26;&#x26; this.cache &#x26;&#x26;
-    (this.cacheSetTimestamp + this.cacheResetPeriod) &#x3e;= currTimestamp;
+  return this.cacheResetPeriod &amp;&amp; this.cache &amp;&amp;
+    (this.cacheSetTimestamp + this.cacheResetPeriod) &gt;= currTimestamp;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -1087,9 +1080,9 @@
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">Sitemap.prototype.toGzip = function (callback) {
-  var zlib = require(&#x27;zlib&#x27;);
+  var zlib = require('zlib');
 
-  if (typeof callback === &#x27;function&#x27;) {
+  if (typeof callback === 'function') {
     zlib.gzip(this.toString(), callback);
   } else {
     return zlib.gzipSync(this.toString());
@@ -1110,36 +1103,36 @@
     <li>description and source-code<pre class="apidocCodePre">Sitemap.prototype.toString = function () {
   var self = this, xml;
   if(!self.xmlNs) {
-      xml = [&#x27;&#x3c;?xml version=&#x22;1.0&#x22; encoding=&#x22;UTF-8&#x22;?&#x3e;&#x27;,
-      &#x27;&#x3c;urlset xmlns=&#x22;http://www.sitemaps.org/schemas/sitemap/0.9&#x22; &#x27; +
-      &#x27;xmlns:news=&#x22;http://www.google.com/schemas/sitemap-news/0.9&#x22; &#x27; +
-      &#x27;xmlns:xhtml=&#x22;http://www.w3.org/1999/xhtml&#x22; &#x27; +
-      &#x27;xmlns:mobile=&#x22;http://www.google.com/schemas/sitemap-mobile/1.0&#x22; &#x27; +
-      &#x27;xmlns:image=&#x22;http://www.google.com/schemas/sitemap-image/1.1&#x22; &#x27; +
-      &#x27;xmlns:video=&#x22;http://www.google.com/schemas/sitemap-video/1.1&#x22;&#x3e;&#x27;
+      xml = ['&lt;?xml version="1.0" encoding="UTF-8"?&gt;',
+      '&lt;urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" ' +
+      'xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" ' +
+      'xmlns:xhtml="http://www.w3.org/1999/xhtml" ' +
+      'xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" ' +
+      'xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" ' +
+      'xmlns:video="http://www.google.com/schemas/sitemap-video/1.1"&gt;'
     ];
   } else {
-    xml = [&#x27;&#x3c;?xml version=&#x22;1.0&#x22; encoding=&#x22;UTF-8&#x22;?&#x3e;&#x27;, &#x27;&#x3c;urlset &#x27;+ this.xmlNs + &#x27;&#x3e;&#x27;]
+    xml = ['&lt;?xml version="1.0" encoding="UTF-8"?&gt;', '&lt;urlset '+ this.xmlNs + '&gt;']
   }
 
   if (self.xslUrl) {
     xml.splice(1, 0,
-      &#x27;&#x3c;?xml-stylesheet type=&#x22;text/xsl&#x22; href=&#x22;&#x27; + self.xslUrl + &#x27;&#x22;?&#x3e;&#x27;);
+      '&lt;?xml-stylesheet type="text/xsl" href="' + self.xslUrl + '"?&gt;');
   }
 
   if (self.isCacheValid()) {
     return self.cache;
   }
 
-  // TODO: if size &#x3e; limit: create sitemapindex
+  // TODO: if size &gt; limit: create sitemapindex
 
   self.urls.forEach(function (elem, index) {
     // SitemapItem
     var smi = elem;
 
     // create object with url property
-    if (typeof elem == &#x27;string&#x27;) {
-      smi = {&#x27;url&#x27;: elem};
+    if (typeof elem == 'string') {
+      smi = {'url': elem};
     }
     // insert domain name
     if (self.hostname) {
@@ -1147,12 +1140,12 @@
         smi.url = urljoin(self.hostname, smi.url);
       }
       if (smi.img) {
-        if (typeof smi.img == &#x27;string&#x27;) {
-          // string -&#x3e; array of objects
+        if (typeof smi.img == 'string') {
+          // string -&gt; array of objects
           smi.img = [{url: smi.img}];
         }
-        if (typeof smi.img == &#x27;object&#x27; &#x26;&#x26; smi.img.length == undefined) {
-          // object -&#x3e; array of objects
+        if (typeof smi.img == 'object' &amp;&amp; smi.img.length == undefined) {
+          // object -&gt; array of objects
           smi.img = [smi.img];
         }
         // prepend hostname to all image urls
@@ -1173,9 +1166,9 @@
     xml.push(new SitemapItem(smi));
   });
   // close xml
-  xml.push(&#x27;&#x3c;/urlset&#x3e;&#x27;);
+  xml.push('&lt;/urlset&gt;');
 
-  return self.setCache(xml.join(&#x27;\n&#x27;));
+  return self.setCache(xml.join('\n'));
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -1190,7 +1183,7 @@
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">Sitemap.prototype.toXML = function (callback) {
-  if (typeof callback === &#x27;undefined&#x27;) {
+  if (typeof callback === 'undefined') {
     return this.toString();
   }
   var self = this;
@@ -1216,9 +1209,9 @@
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function SitemapItem(conf) {
   var conf = conf || {}
-    , is_safe_url = conf[&#x27;safe&#x27;];
+    , is_safe_url = conf['safe'];
 
-  if (!conf[&#x27;url&#x27;]) {
+  if (!conf['url']) {
     throw new err.NoURLError();
   }
 
@@ -1230,37 +1223,37 @@
   }
 
   // If given a file to use for last modified date
-  if (conf[&#x27;lastmodfile&#x27;]) {
-    //console.log(&#x27;should read stat from file: &#x27; + conf[&#x27;lastmodfile&#x27;]);
-    var file = conf[&#x27;lastmodfile&#x27;];
+  if (conf['lastmodfile']) {
+    //console.log('should read stat from file: ' + conf['lastmodfile']);
+    var file = conf['lastmodfile'];
 
     var stat = fs.statSync(file);
 
     var mtime = stat.mtime;
 
     var dt = new Date(mtime);
-    this.lastmod = ut.getTimestampFromDate(dt, conf[&#x27;lastmodrealtime&#x27;]);
+    this.lastmod = ut.getTimestampFromDate(dt, conf['lastmodrealtime']);
 
   }
   // The date of last modification (YYYY-MM-DD)
-  else if (conf[&#x27;lastmod&#x27;]) {
+  else if (conf['lastmod']) {
     // append the timezone offset so that dates are treated as local time.
     // Otherwise the Unit tests fail sometimes.
-    var timezoneOffset = &#x27;UTC-&#x27; + (new Date().getTimezoneOffset() / 60) + &#x27;00&#x27;;
-    timezoneOffset = timezoneOffset.replace(&#x27;--&#x27;, &#x27;-&#x27;);
-    var dt = new Date(conf[&#x27;lastmod&#x27;] + &#x27; &#x27; + timezoneOffset);
-    this.lastmod = ut.getTimestampFromDate(dt, conf[&#x27;lastmodrealtime&#x27;]);
-  } else if (conf[&#x27;lastmodISO&#x27;]) {
-    this.lastmod = conf[&#x27;lastmodISO&#x27;];
+    var timezoneOffset = 'UTC-' + (new Date().getTimezoneOffset() / 60) + '00';
+    timezoneOffset = timezoneOffset.replace('--', '-');
+    var dt = new Date(conf['lastmod'] + ' ' + timezoneOffset);
+    this.lastmod = ut.getTimestampFromDate(dt, conf['lastmodrealtime']);
+  } else if (conf['lastmodISO']) {
+    this.lastmod = conf['lastmodISO'];
   }
 
   // How frequently the page is likely to change
   // due to this field is optional no default value is set
   // please see: http://www.sitemaps.org/protocol.html
-  this.changefreq = conf[&#x27;changefreq&#x27;];
-  if (!is_safe_url &#x26;&#x26; this.changefreq) {
-    if ([&#x27;always&#x27;, &#x27;hourly&#x27;, &#x27;daily&#x27;, &#x27;weekly&#x27;, &#x27;monthly&#x27;,
-        &#x27;yearly&#x27;, &#x27;never&#x27;].indexOf(this.changefreq) === -1) {
+  this.changefreq = conf['changefreq'];
+  if (!is_safe_url &amp;&amp; this.changefreq) {
+    if (['always', 'hourly', 'daily', 'weekly', 'monthly',
+        'yearly', 'never'].indexOf(this.changefreq) === -1) {
       throw new err.ChangeFreqInvalidError();
     }
   }
@@ -1268,21 +1261,21 @@
   // The priority of this URL relative to other URLs
   // due to this field is optional no default value is set
   // please see: http://www.sitemaps.org/protocol.html
-  this.priority = conf[&#x27;priority&#x27;];
-  if (!is_safe_url &#x26;&#x26; this.priority) {
-    if (!(this.priority &#x3e;= 0.0 &#x26;&#x26; this.priority &#x3c;= 1.0) || typeof this.priority !== &#x27;number&#x27;) {
+  this.priority = conf['priority'];
+  if (!is_safe_url &amp;&amp; this.priority) {
+    if (!(this.priority &gt;= 0.0 &amp;&amp; this.priority &lt;= 1.0) || typeof this.priority !== 'number') {
       throw new err.PriorityInvalidError();
     }
   }
 
-  this.news = conf[&#x27;news&#x27;] || null;
-  this.img = conf[&#x27;img&#x27;] || null;
-  this.links = conf[&#x27;links&#x27;] || null;
-  this.expires = conf[&#x27;expires&#x27;] || null;
-  this.androidLink = conf[&#x27;androidLink&#x27;] || null;
-  this.mobile = conf[&#x27;mobile&#x27;] || null;
-  this.video = conf[&#x27;video&#x27;] || null;
-  this.ampLink = conf[&#x27;ampLink&#x27;] || null;
+  this.news = conf['news'] || null;
+  this.img = conf['img'] || null;
+  this.links = conf['links'] || null;
+  this.expires = conf['expires'] || null;
+  this.androidLink = conf['androidLink'] || null;
+  this.mobile = conf['mobile'] || null;
+  this.video = conf['video'] || null;
+  this.ampLink = conf['ampLink'] || null;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -1298,11 +1291,11 @@
     <ul>
     <li>description and source-code<pre class="apidocCodePre">SitemapItem.prototype.toString = function () {
   // result xml
-  var xml = &#x27;&#x3c;url&#x3e; {loc} {img} {video} {lastmod} {changefreq} {priority} {links} {expires} {androidLink} {mobile} {news} {ampLink
-}&#x3c;/url&#x3e;&#x27;
+  var xml = '&lt;url&gt; {loc} {img} {video} {lastmod} {changefreq} {priority} {links} {expires} {androidLink} {mobile} {news} {ampLink
+}&lt;/url&gt;'
   // xml property
-    , props = [&#x27;loc&#x27;, &#x27;img&#x27;, &#x27;video&#x27;, &#x27;lastmod&#x27;, &#x27;changefreq&#x27;, &#x27;priority&#x27;, &#x27;links&#x27;, &#x27;expires&#x27;, &#x27;androidLink&#x27;, &#x27;mobile&#x27;, &#x27;news&#x27;, &#x27;
-ampLink&#x27;]
+    , props = ['loc', 'img', 'video', 'lastmod', 'changefreq', 'priority', 'links', 'expires', 'androidLink', 'mobile', 'news', '
+ampLink']
   // property array size (for loop)
     , ps = props.length
   // current property name (for loop)
@@ -1311,76 +1304,76 @@ ampLink&#x27;]
   while (ps--) {
     p = props[ps];
 
-    if (this[p] &#x26;&#x26; p == &#x27;img&#x27;) {
-      var imagexml = &#x27;&#x27;;
+    if (this[p] &amp;&amp; p == 'img') {
+      var imagexml = '';
       // Image handling
-      if (typeof(this[p]) != &#x27;object&#x27; || this[p].length == undefined) {
+      if (typeof(this[p]) != 'object' || this[p].length == undefined) {
         // make it an array
         this[p] = [this[p]];
       }
       this[p].forEach(function (image) {
-        if(typeof(image) != &#x27;object&#x27;) {
-          // it’s a string
+        if(typeof(image) != 'object') {
+          // itâ€™s a string
           // make it an object
           image = {url: image};
         }
-        var caption = image.caption ? &#x27;&#x3c;image:caption&#x3e;&#x3c;![CDATA[&#x27;+image.caption+&#x27;]]&#x3e;&#x3c;/image:caption&#x3e;&#x27; : &#x27;&#x27;;
-        var geoLocation = image.geoLocation ? &#x27;&#x3c;image:geo_location&#x3e;&#x27;+image.geoLocation+&#x27;&#x3c;/image:geo_location&#x3e;&#x27; : &#x27;&#x27;;
-        var title = image.title ? &#x27;&#x3c;image:title&#x3e;&#x3c;![CDATA[&#x27;+image.title+&#x27;]]&#x3e;&#x3c;/image:title&#x3e;&#x27; : &#x27;&#x27;;
-        var license = image.license ? &#x27;&#x3c;image:license&#x3e;&#x27;+image.license+&#x27;&#x3c;/image:license&#x3e;&#x27; : &#x27;&#x27;;
+        var caption = image.caption ? '&lt;image:caption&gt;&lt;![CDATA['+image.caption+']]&gt;&lt;/image:caption&gt;' : '';
+        var geoLocation = image.geoLocation ? '&lt;image:geo_location&gt;'+image.geoLocation+'&lt;/image:geo_location&gt;' : '';
+        var title = image.title ? '&lt;image:title&gt;&lt;![CDATA['+image.title+']]&gt;&lt;/image:title&gt;' : '';
+        var license = image.license ? '&lt;image:license&gt;'+image.license+'&lt;/image:license&gt;' : '';
 
-        imagexml += &#x27;&#x3c;image:image&#x3e;&#x3c;image:loc&#x3e;&#x27; + image.url + &#x27;&#x3c;/image:loc&#x3e;&#x27; + caption + geoLocation + title + license + &#x27;&#x3c;/image
-:image&#x3e; &#x27;;
+        imagexml += '&lt;image:image&gt;&lt;image:loc&gt;' + image.url + '&lt;/image:loc&gt;' + caption + geoLocation + title + license + '&lt;/image
+:image&gt; ';
       });
 
-      xml = xml.replace(&#x27;{&#x27; + p + &#x27;}&#x27;, imagexml);
+      xml = xml.replace('{' + p + '}', imagexml);
 
-    } else if (this[p] &#x26;&#x26; p == &#x27;video&#x27;) {
-      var videoxml = &#x27;&#x27;;
+    } else if (this[p] &amp;&amp; p == 'video') {
+      var videoxml = '';
       // Image handling
-      if (typeof(this[p]) != &#x27;object&#x27; || this[p].length == undefined) {
+      if (typeof(this[p]) != 'object' || this[p].length == undefined) {
         // make it an array
         this[p] = [this[p]];
       }
       this[p].forEach(function (video) {
-        if(typeof(video) != &#x27;object&#x27; || !video.thumbnail_loc || !video.title || !video.description) {
+        if(typeof(video) != 'object' || !video.thumbnail_loc || !video.title || !video.description) {
           // has to be an object and include required categories https://developers.google.com/webmasters/videosearch/sitemaps
           throw new err.InvalidVideoFormat();
         }
-        videoxml += &#x27;&#x3c;video:video&#x3e;&#x27; +
-          &#x27;&#x3c;video:thumbnail_loc&#x3e;&#x27; + video.thumbnail_loc + &#x27;&#x3c;/video:thumbnail_loc&#x3e;&#x27; +
-          &#x27;&#x3c;video:title&#x3e;&#x3c;![CDATA[&#x27; + video.title + &#x27;]]&#x3e;&#x3c;/video:title&#x3e;&#x27; +
-          &#x27;&#x3c;video:description&#x3e;&#x3c;![CDATA[&#x27; + video.description + &#x27;]]&#x3e;&#x3c;/video:description&#x3e;&#x27;;
+        videoxml += '&lt;video:video&gt;' +
+          '&lt;video:thumbnail_loc&gt;' + video.thumbnail_loc + '&lt;/video:thumbnail_loc&gt;' +
+          '&lt;video:title&gt;&lt;![CDATA[' + video.title + ']]&gt;&lt;/video:title&gt;' +
+          '&lt;video:description&gt;&lt;![CDATA[' + video.description + ']]&gt;&lt;/video:description&gt;';
         if (video.content_loc)
-          videoxml += &#x27;&#x3c;video:content_loc&#x3e;&#x27; + video.content_loc + &#x27;&#x3c;/video:content_loc&#x3e;&#x27;;
+          videoxml += '&lt;video:content_loc&gt;' + video.content_loc + '&lt;/video:content_loc&gt;';
         if (video.player_loc)
-          videoxml += &#x27;&#x3c;video:player_loc&#x3e;&#x27; + video.player_loc + &#x27;&#x3c;/video:player_loc&#x3e;&#x27;;
+          videoxml += '&lt;video:player_loc&gt;' + video.player_loc + '&lt;/video:player_loc&gt;';
         if (video.duration)
-          videoxml += &#x27;&#x3c;video:duration&#x3e;&#x27; + video.duration + &#x27;&#x3c;/video:duration&#x3e;&#x27;;
+          videoxml += '&lt;video:duration&gt;' + video.duration + '&lt;/video:duration&gt;';
         if (video.expiration_date)
-          videoxml += &#x27;&#x3c;video:expiration_date&#x3e;&#x27; + video.expiration_date + &#x27;&#x3c;/video:expiration_date&#x3e;&#x27;;
+          videoxml += '&lt;video:expiration_date&gt;' + video.expiration_date + '&lt;/video:expiration_date&gt;';
         if (video.rating)
-          videoxml += &#x27;&#x3c;video:rating&#x3e;&#x27; + video.rating + &#x27;&#x3c;/video:rating&#x3e;&#x27;;
+          videoxml += '&lt;video:rating&gt;' + video.rating + '&lt;/video:rating&gt;';
         if (video.view_count)
-          videoxml += &#x27;&#x3c;video:view_count&#x3e;&#x27; + video.view_count + &#x27;&#x3c;/video:view_count&#x3e;&#x27;;
+          videoxml += '&lt;video:view_count&gt;' + video.view_count + '&lt;/video:view_count&gt;';
         if (video.publication_date)
-          videoxml += &#x27;&#x3c;video:publication_date&#x3e;&#x27; + video.publication_date + &#x27;&#x3c;/video:publication_date&#x3e;&#x27;;
+          videoxml += '&lt;video:publication_date&gt;' + video.publication_date + '&lt;/video:publication_date&gt;';
         if (video.family_friendly)
-          videoxml += &#x27;&#x3c;video:family_friendly&#x3e;&#x27; + video.family_friendly + &#x27;&#x3c;/video:family_friendly&#x3e;&#x27;;
+          videoxml += '&lt;video:family_friendly&gt;' + video.family_friendly + '&lt;/video:family_friendly&gt;';
         if (video.tag)
-          videoxml += &#x27;&#x3c;video:tag&#x3e;&#x27; + video.tag + &#x27;&#x3c;/video:tag&#x3e;&#x27;;
+          videoxml += '&lt;video:tag&gt;' + video.tag + '&lt;/video:tag&gt;';
         if (video.category)
-          videoxml += &#x27;&#x3c;video:category&#x3e;&#x27; + video.category + &#x27;&#x3c;/video:category&#x3e;&#x27;;
+          videoxml += '&lt;video:category&gt;' + video.category + '&lt;/video:category&gt;';
         if (video.restriction)
-          videoxml += &#x27;&#x3c;video:restriction&#x3e;&#x27; + video.restriction + &#x27;&#x3c;/video:restriction&#x3e;&#x27;;
+          videoxml += '&lt;video:restriction&gt;' + video.restriction + '&lt;/video:restriction&gt;';
         if (video.gallery_loc)
-          videoxml += &#x27;&#x3c;video:gallery_loc&#x3e;&#x27; + video.gallery_loc + &#x27;&#x3c;/video:gallery_loc&#x3e;&#x27;;
+          videoxml += '&lt;video:gallery_loc&gt;' + video.gallery_loc + '&lt;/video:gallery_loc&gt;';
         if (video.price)
-          videoxml += &#x27;&#x3c;video:price&#x3e;&#x27; + video.price + &#x27;&#x3c;/video:price&#x3e;&#x27;;
+          videoxml += '&lt;video:price&gt;' + video.price + '&lt;/video:price&gt;';
         if (video.requires_subscription)
-          videoxml += &#x27;&#x3c;video:requires_subscription&#x3e;&#x27; + video.requires_subscription + &#x27;&#x3c;/video:requires_subscription&#x3e;&#x27;;
+          videoxml += '&lt;video:requires_subscription&gt;' + video.requires_subscription + '&lt;/video:requires_subscription&gt;';
         if (video.uploader)
-          videoxml += &#x27;&#x3c;video:uploader&#x3e;&#x27; + video.uploader + ...</pre></li>
+          videoxml += '&lt;video:uploader&gt;' + video.uploader + ...</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
 
@@ -1411,29 +1404,29 @@ ampLink&#x27;]
     <li>description and source-code<pre class="apidocCodePre">function buildSitemapIndex(conf) {
   var xml = [];
 
-  xml.push(&#x27;&#x3c;?xml version=&#x22;1.0&#x22; encoding=&#x22;UTF-8&#x22;?&#x3e;&#x27;);
+  xml.push('&lt;?xml version="1.0" encoding="UTF-8"?&gt;');
   if (conf.xslUrl) {
-    xml.push(&#x27;&#x3c;?xml-stylesheet type=&#x22;text/xsl&#x22; href=&#x22;&#x27; + conf.xslUrl + &#x27;&#x22;?&#x3e;&#x27;);
+    xml.push('&lt;?xml-stylesheet type="text/xsl" href="' + conf.xslUrl + '"?&gt;');
   }
   if(!conf.xmlNs) {
-    xml.push(&#x27;&#x3c;sitemapindex xmlns=&#x22;http://www.sitemaps.org/schemas/sitemap/0.9&#x22; &#x27; +
-      &#x27;xmlns:mobile=&#x22;http://www.google.com/schemas/sitemap-mobile/1.0&#x22; &#x27; +
-      &#x27;xmlns:image=&#x22;http://www.google.com/schemas/sitemap-image/1.1&#x22; &#x27; +
-      &#x27;xmlns:video=&#x22;http://www.google.com/schemas/sitemap-video/1.1&#x22;&#x3e;&#x27;);
+    xml.push('&lt;sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" ' +
+      'xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" ' +
+      'xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" ' +
+      'xmlns:video="http://www.google.com/schemas/sitemap-video/1.1"&gt;');
   } else {
-    xml.push(&#x27;&#x3c;sitemapindex &#x27; + conf.xmlNs + &#x27;&#x3e;&#x27;)
+    xml.push('&lt;sitemapindex ' + conf.xmlNs + '&gt;')
   }
 
 
   conf.urls.forEach(function (url) {
-    xml.push(&#x27;&#x3c;sitemap&#x3e;&#x27;);
-    xml.push(&#x27;&#x3c;loc&#x3e;&#x27; + url + &#x27;&#x3c;/loc&#x3e;&#x27;);
-    xml.push(&#x27;&#x3c;/sitemap&#x3e;&#x27;);
+    xml.push('&lt;sitemap&gt;');
+    xml.push('&lt;loc&gt;' + url + '&lt;/loc&gt;');
+    xml.push('&lt;/sitemap&gt;');
   });
 
-  xml.push(&#x27;&#x3c;/sitemapindex&#x3e;&#x27;);
+  xml.push('&lt;/sitemapindex&gt;');
 
-  return xml.join(&#x27;\n&#x27;);
+  return xml.join('\n');
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
     });
@@ -1442,10 +1435,10 @@ ampLink&#x27;]
 ### Example of Sitemap Index as String
 
 ```javascript
-var sm = require(&#x27;sitemap&#x27;)
+var sm = require('sitemap')
   , smi = sm.<span class="apidocCodeKeywordSpan">buildSitemapIndex</span>({
-      urls: [&#x27;https://example.com/sitemap1.xml&#x27;, &#x27;https://example.com/sitemap2.xml&#x27;]
-      xslUrl: &#x27;https://example.com/style.xsl&#x27; // optional
+      urls: ['https://example.com/sitemap1.xml', 'https://example.com/sitemap2.xml']
+      xslUrl: 'https://example.com/style.xsl' // optional
     });
 ```
 
@@ -1471,7 +1464,7 @@ Usage
 The main functions you want to use in the sitemap module are
 
 ```javascript
-var sm = require(&#x27;sitemap&#x27;)
+var sm = require('sitemap')
 // Creates a sitemap object given the input configuration with URLs
 var sitemap = sm.<span class="apidocCodeKeywordSpan">createSitemap</span>({ options });
 // Generates XML with a callback function
@@ -1511,14 +1504,14 @@ var xml = sitemap.toString();
 ### Example of Sitemap Index
 
 ```javascript
-var sm = require(&#x27;sitemap&#x27;)
+var sm = require('sitemap')
 , smi = sm.<span class="apidocCodeKeywordSpan">createSitemapIndex</span>({
     cacheTime: 600000,
-    hostname: &#x27;http://www.sitemap.org&#x27;,
-    sitemapName: &#x27;sm-test&#x27;,
+    hostname: 'http://www.sitemap.org',
+    sitemapName: 'sm-test',
     sitemapSize: 1,
-    targetFolder: require(&#x27;os&#x27;).tmpdir(),
-    urls: [&#x27;http://ya.ru&#x27;, &#x27;http://ya2.ru&#x27;]
+    targetFolder: require('os').tmpdir(),
+    urls: ['http://ya.ru', 'http://ya2.ru']
     // optional:
 ...</pre></li>
     </ul>
@@ -1533,8 +1526,8 @@ var sm = require(&#x27;sitemap&#x27;)
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">errors.ChangeFreqInvalidError = function (message) {
-  this.name = &#x27;ChangeFreqInvalidError&#x27;;
-  this.message = message || &#x27;changefreq is invalid&#x27;;
+  this.name = 'ChangeFreqInvalidError';
+  this.message = message || 'changefreq is invalid';
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -1549,8 +1542,8 @@ var sm = require(&#x27;sitemap&#x27;)
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">errors.InvalidVideoFormat = function (message) {
-  this.name = &#x27;InvalidVideoFormat&#x27;;
-  this.message = message || &#x27;must include thumbnail_loc, title and description fields for videos &#x27;;
+  this.name = 'InvalidVideoFormat';
+  this.message = message || 'must include thumbnail_loc, title and description fields for videos ';
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -1565,8 +1558,8 @@ var sm = require(&#x27;sitemap&#x27;)
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">errors.NoURLError = function (message) {
-  this.name = &#x27;NoURLError&#x27;;
-  this.message = message || &#x27;URL is required&#x27;;
+  this.name = 'NoURLError';
+  this.message = message || 'URL is required';
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -1581,8 +1574,8 @@ var sm = require(&#x27;sitemap&#x27;)
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">errors.NoURLProtocolError = function (message) {
-  this.name = &#x27;NoURLProtocolError&#x27;;
-  this.message = message || &#x27;Protocol is required&#x27;;
+  this.name = 'NoURLProtocolError';
+  this.message = message || 'Protocol is required';
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -1597,8 +1590,8 @@ var sm = require(&#x27;sitemap&#x27;)
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">errors.PriorityInvalidError = function (message) {
-  this.name = &#x27;PriorityInvalidError&#x27;;
-  this.message = message || &#x27;priority is invalid&#x27;;
+  this.name = 'PriorityInvalidError';
+  this.message = message || 'priority is invalid';
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -1613,8 +1606,8 @@ var sm = require(&#x27;sitemap&#x27;)
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">errors.UndefinedTargetFolder = function (message) {
-  this.name = &#x27;UndefinedTargetFolder&#x27;;
-  this.message = message || &#x27;Target folder must exist&#x27;;
+  this.name = 'UndefinedTargetFolder';
+  this.message = message || 'Target folder must exist';
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -1704,16 +1697,16 @@ var sm = require(&#x27;sitemap&#x27;)
     <ul>
     <li>description and source-code<pre class="apidocCodePre">utils.getTimestampFromDate = function (dt, bRealtime) {
   var timestamp = [dt.getUTCFullYear(), exports.lpad(dt.getUTCMonth() + 1, 2),
-    exports.lpad(dt.getUTCDate(), 2)].join(&#x27;-&#x27;);
+    exports.lpad(dt.getUTCDate(), 2)].join('-');
 
   // Indicate that lastmod should include minutes and seconds (and timezone)
-  if (bRealtime &#x26;&#x26; bRealtime === true) {
-    timestamp += &#x27;T&#x27;;
+  if (bRealtime &amp;&amp; bRealtime === true) {
+    timestamp += 'T';
     timestamp += [exports.lpad(dt.getUTCHours(), 2),
       exports.lpad(dt.getUTCMinutes(), 2),
       exports.lpad(dt.getUTCSeconds(), 2)
-    ].join(&#x27;:&#x27;);
-    timestamp += &#x27;Z&#x27;;
+    ].join(':');
+    timestamp += 'Z';
   }
 
   return timestamp;
@@ -1731,7 +1724,7 @@ var sm = require(&#x27;sitemap&#x27;)
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">utils.htmlEscape = function (text) {
-  return text.replace(/&#x26;/g, &#x27;&#x26;amp;&#x27;).replace(/&#x3c;/g, &#x27;&#x26;lt;&#x27;).replace(/&#x3e;/g, &#x27;&#x26;gt;&#x27;).replace(/&#x22;/g, &#x27;&#x26;quot;&#x27;).replace(/&#x27;/g, &#x27;&#x26;#039;&#x27;);
+  return text.replace(/&amp;/g, '&amp;amp;').replace(/&lt;/g, '&amp;lt;').replace(/&gt;/g, '&amp;gt;').replace(/"/g, '&amp;quot;').replace(/'/g, '&amp;#039;');
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -1747,20 +1740,20 @@ var sm = require(&#x27;sitemap&#x27;)
     <ul>
     <li>description and source-code<pre class="apidocCodePre">utils.lpad = function (n, len, chr) {
   var res = n.toString()
-    , chr = chr || &#x27;0&#x27;
-    , leading = (res.substr(0, 1) === &#x27;-&#x27;);
+    , chr = chr || '0'
+    , leading = (res.substr(0, 1) === '-');
 
   //If left side of string is a minus sign (negative number), we want to ignore that in the padding process
   if (leading) {
-    res = res.substr(1); //cut-off the leading &#x27;-&#x27;
+    res = res.substr(1); //cut-off the leading '-'
   }
 
-  while (res.length &#x3c; len) {
+  while (res.length &lt; len) {
     res = chr + res;
   }
 
-  if (leading) { //If we initially cutoff the leading &#x27;-&#x27;, we add it again here
-    res = &#x27;-&#x27; + res;
+  if (leading) { //If we initially cutoff the leading '-', we add it again here
+    res = '-' + res;
   }
 
   return res;
@@ -1809,7 +1802,7 @@ var sm = require(&#x27;sitemap&#x27;)
 
   // sitemap cache
   this.cacheResetPeriod = cacheTime || 0;
-  this.cache = &#x27;&#x27;;
+  this.cache = '';
 
   this.xslUrl = xslUrl;
   this.xmlNs = xmlNs;
@@ -1839,13 +1832,13 @@ var sm = require(&#x27;sitemap&#x27;)
 
 ```javascript
 var sitemap = sm.createSitemap ({
-      hostname: &#x27;http://example.com&#x27;,
+      hostname: 'http://example.com',
       cacheTime: 600000
     });
-sitemap.<span class="apidocCodeKeywordSpan">add</span>({url: &#x27;/page-1/&#x27;});
-sitemap.add({url: &#x27;/page-2/&#x27;, changefreq: &#x27;monthly&#x27;, priority: 0.7});
-sitemap.del({url: &#x27;/page-2/&#x27;});
-sitemap.del(&#x27;/page-1/&#x27;);
+sitemap.<span class="apidocCodeKeywordSpan">add</span>({url: '/page-1/'});
+sitemap.add({url: '/page-2/', changefreq: 'monthly', priority: 0.7});
+sitemap.del({url: '/page-2/'});
+sitemap.del('/page-1/');
 ```
 ...</pre></li>
     </ul>
@@ -1860,7 +1853,7 @@ sitemap.del(&#x27;/page-1/&#x27;);
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">clearCache = function () {
-  this.cache = &#x27;&#x27;;
+  this.cache = '';
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -1876,23 +1869,23 @@ sitemap.del(&#x27;/page-1/&#x27;);
     <ul>
     <li>description and source-code<pre class="apidocCodePre">del = function (url) {
   var index_to_remove = [],
-    key = &#x27;&#x27;,
+    key = '',
     self = this;
 
-  if (typeof url == &#x27;string&#x27;) {
+  if (typeof url == 'string') {
     key = url;
   } else {
-    key = url[&#x27;url&#x27;];
+    key = url['url'];
   }
 
   // find
   this.urls.forEach(function (elem, index) {
-    if (typeof elem == &#x27;string&#x27;) {
+    if (typeof elem == 'string') {
       if (elem == key) {
         index_to_remove.push(index);
       }
     } else {
-      if (elem[&#x27;url&#x27;] == key) {
+      if (elem['url'] == key) {
         index_to_remove.push(index);
       }
     }
@@ -1908,13 +1901,13 @@ sitemap.del(&#x27;/page-1/&#x27;);
     <li>example usage<pre class="apidocCodePre">...
 ```javascript
 var sitemap = sm.createSitemap ({
-      hostname: &#x27;http://example.com&#x27;,
+      hostname: 'http://example.com',
       cacheTime: 600000
     });
-sitemap.add({url: &#x27;/page-1/&#x27;});
-sitemap.add({url: &#x27;/page-2/&#x27;, changefreq: &#x27;monthly&#x27;, priority: 0.7});
-sitemap.<span class="apidocCodeKeywordSpan">del</span>({url: &#x27;/page-2/&#x27;});
-sitemap.del(&#x27;/page-1/&#x27;);
+sitemap.add({url: '/page-1/'});
+sitemap.add({url: '/page-2/', changefreq: 'monthly', priority: 0.7});
+sitemap.<span class="apidocCodeKeywordSpan">del</span>({url: '/page-2/'});
+sitemap.del('/page-1/');
 ```
 
 
@@ -1934,8 +1927,8 @@ sitemap.del(&#x27;/page-1/&#x27;);
     <ul>
     <li>description and source-code<pre class="apidocCodePre">isCacheValid = function () {
   var currTimestamp = ut.getTimestamp();
-  return this.cacheResetPeriod &#x26;&#x26; this.cache &#x26;&#x26;
-    (this.cacheSetTimestamp + this.cacheResetPeriod) &#x3e;= currTimestamp;
+  return this.cacheResetPeriod &amp;&amp; this.cache &amp;&amp;
+    (this.cacheSetTimestamp + this.cacheResetPeriod) &gt;= currTimestamp;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -1967,9 +1960,9 @@ sitemap.del(&#x27;/page-1/&#x27;);
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">toGzip = function (callback) {
-  var zlib = require(&#x27;zlib&#x27;);
+  var zlib = require('zlib');
 
-  if (typeof callback === &#x27;function&#x27;) {
+  if (typeof callback === 'function') {
     zlib.gzip(this.toString(), callback);
   } else {
     return zlib.gzipSync(this.toString());
@@ -1990,36 +1983,36 @@ sitemap.del(&#x27;/page-1/&#x27;);
     <li>description and source-code<pre class="apidocCodePre">toString = function () {
   var self = this, xml;
   if(!self.xmlNs) {
-      xml = [&#x27;&#x3c;?xml version=&#x22;1.0&#x22; encoding=&#x22;UTF-8&#x22;?&#x3e;&#x27;,
-      &#x27;&#x3c;urlset xmlns=&#x22;http://www.sitemaps.org/schemas/sitemap/0.9&#x22; &#x27; +
-      &#x27;xmlns:news=&#x22;http://www.google.com/schemas/sitemap-news/0.9&#x22; &#x27; +
-      &#x27;xmlns:xhtml=&#x22;http://www.w3.org/1999/xhtml&#x22; &#x27; +
-      &#x27;xmlns:mobile=&#x22;http://www.google.com/schemas/sitemap-mobile/1.0&#x22; &#x27; +
-      &#x27;xmlns:image=&#x22;http://www.google.com/schemas/sitemap-image/1.1&#x22; &#x27; +
-      &#x27;xmlns:video=&#x22;http://www.google.com/schemas/sitemap-video/1.1&#x22;&#x3e;&#x27;
+      xml = ['&lt;?xml version="1.0" encoding="UTF-8"?&gt;',
+      '&lt;urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" ' +
+      'xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" ' +
+      'xmlns:xhtml="http://www.w3.org/1999/xhtml" ' +
+      'xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" ' +
+      'xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" ' +
+      'xmlns:video="http://www.google.com/schemas/sitemap-video/1.1"&gt;'
     ];
   } else {
-    xml = [&#x27;&#x3c;?xml version=&#x22;1.0&#x22; encoding=&#x22;UTF-8&#x22;?&#x3e;&#x27;, &#x27;&#x3c;urlset &#x27;+ this.xmlNs + &#x27;&#x3e;&#x27;]
+    xml = ['&lt;?xml version="1.0" encoding="UTF-8"?&gt;', '&lt;urlset '+ this.xmlNs + '&gt;']
   }
 
   if (self.xslUrl) {
     xml.splice(1, 0,
-      &#x27;&#x3c;?xml-stylesheet type=&#x22;text/xsl&#x22; href=&#x22;&#x27; + self.xslUrl + &#x27;&#x22;?&#x3e;&#x27;);
+      '&lt;?xml-stylesheet type="text/xsl" href="' + self.xslUrl + '"?&gt;');
   }
 
   if (self.isCacheValid()) {
     return self.cache;
   }
 
-  // TODO: if size &#x3e; limit: create sitemapindex
+  // TODO: if size &gt; limit: create sitemapindex
 
   self.urls.forEach(function (elem, index) {
     // SitemapItem
     var smi = elem;
 
     // create object with url property
-    if (typeof elem == &#x27;string&#x27;) {
-      smi = {&#x27;url&#x27;: elem};
+    if (typeof elem == 'string') {
+      smi = {'url': elem};
     }
     // insert domain name
     if (self.hostname) {
@@ -2027,12 +2020,12 @@ sitemap.del(&#x27;/page-1/&#x27;);
         smi.url = urljoin(self.hostname, smi.url);
       }
       if (smi.img) {
-        if (typeof smi.img == &#x27;string&#x27;) {
-          // string -&#x3e; array of objects
+        if (typeof smi.img == 'string') {
+          // string -&gt; array of objects
           smi.img = [{url: smi.img}];
         }
-        if (typeof smi.img == &#x27;object&#x27; &#x26;&#x26; smi.img.length == undefined) {
-          // object -&#x3e; array of objects
+        if (typeof smi.img == 'object' &amp;&amp; smi.img.length == undefined) {
+          // object -&gt; array of objects
           smi.img = [smi.img];
         }
         // prepend hostname to all image urls
@@ -2053,13 +2046,13 @@ sitemap.del(&#x27;/page-1/&#x27;);
     xml.push(new SitemapItem(smi));
   });
   // close xml
-  xml.push(&#x27;&#x3c;/urlset&#x3e;&#x27;);
+  xml.push('&lt;/urlset&gt;');
 
-  return self.setCache(xml.join(&#x27;\n&#x27;));
+  return self.setCache(xml.join('\n'));
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 ```javascript
-var sm = require(&#x27;sitemap&#x27;)
+var sm = require('sitemap')
 // Creates a sitemap object given the input configuration with URLs
 var sitemap = sm.createSitemap({ options });
 // Generates XML with a callback function
@@ -2071,8 +2064,8 @@ var xml = sitemap.<span class="apidocCodeKeywordSpan">toString</span>();
 ### Example of using sitemap.js with [express](https://github.com/visionmedia/express):
 
 ```javascript
-var express = require(&#x27;express&#x27;)
-, sm = require(&#x27;sitemap&#x27;);
+var express = require('express')
+, sm = require('sitemap');
 ...</pre></li>
     </ul>
 
@@ -2086,7 +2079,7 @@ var express = require(&#x27;express&#x27;)
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">toXML = function (callback) {
-  if (typeof callback === &#x27;undefined&#x27;) {
+  if (typeof callback === 'undefined') {
     return this.toString();
   }
   var self = this;
@@ -2102,7 +2095,7 @@ var express = require(&#x27;express&#x27;)
 The main functions you want to use in the sitemap module are
 
 ```javascript
-var sm = require(&#x27;sitemap&#x27;)
+var sm = require('sitemap')
 // Creates a sitemap object given the input configuration with URLs
 var sitemap = sm.createSitemap({ options });
 // Generates XML with a callback function
@@ -2139,13 +2132,13 @@ var xml = sitemap.toString();
 
 ```javascript
 var sitemap = sm.createSitemap ({
-      hostname: &#x27;http://example.com&#x27;,
+      hostname: 'http://example.com',
       cacheTime: 600000
     });
-sitemap.<span class="apidocCodeKeywordSpan">add</span>({url: &#x27;/page-1/&#x27;});
-sitemap.add({url: &#x27;/page-2/&#x27;, changefreq: &#x27;monthly&#x27;, priority: 0.7});
-sitemap.del({url: &#x27;/page-2/&#x27;});
-sitemap.del(&#x27;/page-1/&#x27;);
+sitemap.<span class="apidocCodeKeywordSpan">add</span>({url: '/page-1/'});
+sitemap.add({url: '/page-2/', changefreq: 'monthly', priority: 0.7});
+sitemap.del({url: '/page-2/'});
+sitemap.del('/page-1/');
 ```
 ...</pre></li>
     </ul>
@@ -2165,7 +2158,7 @@ sitemap.del(&#x27;/page-1/&#x27;);
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">clearCache = function () {
-  this.cache = &#x27;&#x27;;
+  this.cache = '';
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -2186,23 +2179,23 @@ sitemap.del(&#x27;/page-1/&#x27;);
     <ul>
     <li>description and source-code<pre class="apidocCodePre">del = function (url) {
   var index_to_remove = [],
-    key = &#x27;&#x27;,
+    key = '',
     self = this;
 
-  if (typeof url == &#x27;string&#x27;) {
+  if (typeof url == 'string') {
     key = url;
   } else {
-    key = url[&#x27;url&#x27;];
+    key = url['url'];
   }
 
   // find
   this.urls.forEach(function (elem, index) {
-    if (typeof elem == &#x27;string&#x27;) {
+    if (typeof elem == 'string') {
       if (elem == key) {
         index_to_remove.push(index);
       }
     } else {
-      if (elem[&#x27;url&#x27;] == key) {
+      if (elem['url'] == key) {
         index_to_remove.push(index);
       }
     }
@@ -2218,13 +2211,13 @@ sitemap.del(&#x27;/page-1/&#x27;);
     <li>example usage<pre class="apidocCodePre">...
 ```javascript
 var sitemap = sm.createSitemap ({
-      hostname: &#x27;http://example.com&#x27;,
+      hostname: 'http://example.com',
       cacheTime: 600000
     });
-sitemap.add({url: &#x27;/page-1/&#x27;});
-sitemap.add({url: &#x27;/page-2/&#x27;, changefreq: &#x27;monthly&#x27;, priority: 0.7});
-sitemap.<span class="apidocCodeKeywordSpan">del</span>({url: &#x27;/page-2/&#x27;});
-sitemap.del(&#x27;/page-1/&#x27;);
+sitemap.add({url: '/page-1/'});
+sitemap.add({url: '/page-2/', changefreq: 'monthly', priority: 0.7});
+sitemap.<span class="apidocCodeKeywordSpan">del</span>({url: '/page-2/'});
+sitemap.del('/page-1/');
 ```
 
 
@@ -2249,8 +2242,8 @@ sitemap.del(&#x27;/page-1/&#x27;);
     <ul>
     <li>description and source-code<pre class="apidocCodePre">isCacheValid = function () {
   var currTimestamp = ut.getTimestamp();
-  return this.cacheResetPeriod &#x26;&#x26; this.cache &#x26;&#x26;
-    (this.cacheSetTimestamp + this.cacheResetPeriod) &#x3e;= currTimestamp;
+  return this.cacheResetPeriod &amp;&amp; this.cache &amp;&amp;
+    (this.cacheSetTimestamp + this.cacheResetPeriod) &gt;= currTimestamp;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -2292,9 +2285,9 @@ sitemap.del(&#x27;/page-1/&#x27;);
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">toGzip = function (callback) {
-  var zlib = require(&#x27;zlib&#x27;);
+  var zlib = require('zlib');
 
-  if (typeof callback === &#x27;function&#x27;) {
+  if (typeof callback === 'function') {
     zlib.gzip(this.toString(), callback);
   } else {
     return zlib.gzipSync(this.toString());
@@ -2320,7 +2313,7 @@ sitemap.del(&#x27;/page-1/&#x27;);
     <li>description and source-code<pre class="apidocCodePre">function toString() { [native code] }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 ```javascript
-var sm = require(&#x27;sitemap&#x27;)
+var sm = require('sitemap')
 // Creates a sitemap object given the input configuration with URLs
 var sitemap = sm.createSitemap({ options });
 // Generates XML with a callback function
@@ -2332,8 +2325,8 @@ var xml = sitemap.<span class="apidocCodeKeywordSpan">toString</span>();
 ### Example of using sitemap.js with [express](https://github.com/visionmedia/express):
 
 ```javascript
-var express = require(&#x27;express&#x27;)
-, sm = require(&#x27;sitemap&#x27;);
+var express = require('express')
+, sm = require('sitemap');
 ...</pre></li>
     </ul>
 
@@ -2352,7 +2345,7 @@ var express = require(&#x27;express&#x27;)
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">toXML = function (callback) {
-  if (typeof callback === &#x27;undefined&#x27;) {
+  if (typeof callback === 'undefined') {
     return this.toString();
   }
   var self = this;
@@ -2368,7 +2361,7 @@ var express = require(&#x27;express&#x27;)
 The main functions you want to use in the sitemap module are
 
 ```javascript
-var sm = require(&#x27;sitemap&#x27;)
+var sm = require('sitemap')
 // Creates a sitemap object given the input configuration with URLs
 var sitemap = sm.createSitemap({ options });
 // Generates XML with a callback function
@@ -2399,9 +2392,9 @@ var xml = sitemap.toString();
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function SitemapItem(conf) {
   var conf = conf || {}
-    , is_safe_url = conf[&#x27;safe&#x27;];
+    , is_safe_url = conf['safe'];
 
-  if (!conf[&#x27;url&#x27;]) {
+  if (!conf['url']) {
     throw new err.NoURLError();
   }
 
@@ -2413,37 +2406,37 @@ var xml = sitemap.toString();
   }
 
   // If given a file to use for last modified date
-  if (conf[&#x27;lastmodfile&#x27;]) {
-    //console.log(&#x27;should read stat from file: &#x27; + conf[&#x27;lastmodfile&#x27;]);
-    var file = conf[&#x27;lastmodfile&#x27;];
+  if (conf['lastmodfile']) {
+    //console.log('should read stat from file: ' + conf['lastmodfile']);
+    var file = conf['lastmodfile'];
 
     var stat = fs.statSync(file);
 
     var mtime = stat.mtime;
 
     var dt = new Date(mtime);
-    this.lastmod = ut.getTimestampFromDate(dt, conf[&#x27;lastmodrealtime&#x27;]);
+    this.lastmod = ut.getTimestampFromDate(dt, conf['lastmodrealtime']);
 
   }
   // The date of last modification (YYYY-MM-DD)
-  else if (conf[&#x27;lastmod&#x27;]) {
+  else if (conf['lastmod']) {
     // append the timezone offset so that dates are treated as local time.
     // Otherwise the Unit tests fail sometimes.
-    var timezoneOffset = &#x27;UTC-&#x27; + (new Date().getTimezoneOffset() / 60) + &#x27;00&#x27;;
-    timezoneOffset = timezoneOffset.replace(&#x27;--&#x27;, &#x27;-&#x27;);
-    var dt = new Date(conf[&#x27;lastmod&#x27;] + &#x27; &#x27; + timezoneOffset);
-    this.lastmod = ut.getTimestampFromDate(dt, conf[&#x27;lastmodrealtime&#x27;]);
-  } else if (conf[&#x27;lastmodISO&#x27;]) {
-    this.lastmod = conf[&#x27;lastmodISO&#x27;];
+    var timezoneOffset = 'UTC-' + (new Date().getTimezoneOffset() / 60) + '00';
+    timezoneOffset = timezoneOffset.replace('--', '-');
+    var dt = new Date(conf['lastmod'] + ' ' + timezoneOffset);
+    this.lastmod = ut.getTimestampFromDate(dt, conf['lastmodrealtime']);
+  } else if (conf['lastmodISO']) {
+    this.lastmod = conf['lastmodISO'];
   }
 
   // How frequently the page is likely to change
   // due to this field is optional no default value is set
   // please see: http://www.sitemaps.org/protocol.html
-  this.changefreq = conf[&#x27;changefreq&#x27;];
-  if (!is_safe_url &#x26;&#x26; this.changefreq) {
-    if ([&#x27;always&#x27;, &#x27;hourly&#x27;, &#x27;daily&#x27;, &#x27;weekly&#x27;, &#x27;monthly&#x27;,
-        &#x27;yearly&#x27;, &#x27;never&#x27;].indexOf(this.changefreq) === -1) {
+  this.changefreq = conf['changefreq'];
+  if (!is_safe_url &amp;&amp; this.changefreq) {
+    if (['always', 'hourly', 'daily', 'weekly', 'monthly',
+        'yearly', 'never'].indexOf(this.changefreq) === -1) {
       throw new err.ChangeFreqInvalidError();
     }
   }
@@ -2451,21 +2444,21 @@ var xml = sitemap.toString();
   // The priority of this URL relative to other URLs
   // due to this field is optional no default value is set
   // please see: http://www.sitemaps.org/protocol.html
-  this.priority = conf[&#x27;priority&#x27;];
-  if (!is_safe_url &#x26;&#x26; this.priority) {
-    if (!(this.priority &#x3e;= 0.0 &#x26;&#x26; this.priority &#x3c;= 1.0) || typeof this.priority !== &#x27;number&#x27;) {
+  this.priority = conf['priority'];
+  if (!is_safe_url &amp;&amp; this.priority) {
+    if (!(this.priority &gt;= 0.0 &amp;&amp; this.priority &lt;= 1.0) || typeof this.priority !== 'number') {
       throw new err.PriorityInvalidError();
     }
   }
 
-  this.news = conf[&#x27;news&#x27;] || null;
-  this.img = conf[&#x27;img&#x27;] || null;
-  this.links = conf[&#x27;links&#x27;] || null;
-  this.expires = conf[&#x27;expires&#x27;] || null;
-  this.androidLink = conf[&#x27;androidLink&#x27;] || null;
-  this.mobile = conf[&#x27;mobile&#x27;] || null;
-  this.video = conf[&#x27;video&#x27;] || null;
-  this.ampLink = conf[&#x27;ampLink&#x27;] || null;
+  this.news = conf['news'] || null;
+  this.img = conf['img'] || null;
+  this.links = conf['links'] || null;
+  this.expires = conf['expires'] || null;
+  this.androidLink = conf['androidLink'] || null;
+  this.mobile = conf['mobile'] || null;
+  this.video = conf['video'] || null;
+  this.ampLink = conf['ampLink'] || null;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -2486,11 +2479,11 @@ var xml = sitemap.toString();
     <ul>
     <li>description and source-code<pre class="apidocCodePre">toString = function () {
   // result xml
-  var xml = &#x27;&#x3c;url&#x3e; {loc} {img} {video} {lastmod} {changefreq} {priority} {links} {expires} {androidLink} {mobile} {news} {ampLink
-}&#x3c;/url&#x3e;&#x27;
+  var xml = '&lt;url&gt; {loc} {img} {video} {lastmod} {changefreq} {priority} {links} {expires} {androidLink} {mobile} {news} {ampLink
+}&lt;/url&gt;'
   // xml property
-    , props = [&#x27;loc&#x27;, &#x27;img&#x27;, &#x27;video&#x27;, &#x27;lastmod&#x27;, &#x27;changefreq&#x27;, &#x27;priority&#x27;, &#x27;links&#x27;, &#x27;expires&#x27;, &#x27;androidLink&#x27;, &#x27;mobile&#x27;, &#x27;news&#x27;, &#x27;
-ampLink&#x27;]
+    , props = ['loc', 'img', 'video', 'lastmod', 'changefreq', 'priority', 'links', 'expires', 'androidLink', 'mobile', 'news', '
+ampLink']
   // property array size (for loop)
     , ps = props.length
   // current property name (for loop)
@@ -2499,79 +2492,79 @@ ampLink&#x27;]
   while (ps--) {
     p = props[ps];
 
-    if (this[p] &#x26;&#x26; p == &#x27;img&#x27;) {
-      var imagexml = &#x27;&#x27;;
+    if (this[p] &amp;&amp; p == 'img') {
+      var imagexml = '';
       // Image handling
-      if (typeof(this[p]) != &#x27;object&#x27; || this[p].length == undefined) {
+      if (typeof(this[p]) != 'object' || this[p].length == undefined) {
         // make it an array
         this[p] = [this[p]];
       }
       this[p].forEach(function (image) {
-        if(typeof(image) != &#x27;object&#x27;) {
-          // it’s a string
+        if(typeof(image) != 'object') {
+          // itâ€™s a string
           // make it an object
           image = {url: image};
         }
-        var caption = image.caption ? &#x27;&#x3c;image:caption&#x3e;&#x3c;![CDATA[&#x27;+image.caption+&#x27;]]&#x3e;&#x3c;/image:caption&#x3e;&#x27; : &#x27;&#x27;;
-        var geoLocation = image.geoLocation ? &#x27;&#x3c;image:geo_location&#x3e;&#x27;+image.geoLocation+&#x27;&#x3c;/image:geo_location&#x3e;&#x27; : &#x27;&#x27;;
-        var title = image.title ? &#x27;&#x3c;image:title&#x3e;&#x3c;![CDATA[&#x27;+image.title+&#x27;]]&#x3e;&#x3c;/image:title&#x3e;&#x27; : &#x27;&#x27;;
-        var license = image.license ? &#x27;&#x3c;image:license&#x3e;&#x27;+image.license+&#x27;&#x3c;/image:license&#x3e;&#x27; : &#x27;&#x27;;
+        var caption = image.caption ? '&lt;image:caption&gt;&lt;![CDATA['+image.caption+']]&gt;&lt;/image:caption&gt;' : '';
+        var geoLocation = image.geoLocation ? '&lt;image:geo_location&gt;'+image.geoLocation+'&lt;/image:geo_location&gt;' : '';
+        var title = image.title ? '&lt;image:title&gt;&lt;![CDATA['+image.title+']]&gt;&lt;/image:title&gt;' : '';
+        var license = image.license ? '&lt;image:license&gt;'+image.license+'&lt;/image:license&gt;' : '';
 
-        imagexml += &#x27;&#x3c;image:image&#x3e;&#x3c;image:loc&#x3e;&#x27; + image.url + &#x27;&#x3c;/image:loc&#x3e;&#x27; + caption + geoLocation + title + license + &#x27;&#x3c;/image
-:image&#x3e; &#x27;;
+        imagexml += '&lt;image:image&gt;&lt;image:loc&gt;' + image.url + '&lt;/image:loc&gt;' + caption + geoLocation + title + license + '&lt;/image
+:image&gt; ';
       });
 
-      xml = xml.replace(&#x27;{&#x27; + p + &#x27;}&#x27;, imagexml);
+      xml = xml.replace('{' + p + '}', imagexml);
 
-    } else if (this[p] &#x26;&#x26; p == &#x27;video&#x27;) {
-      var videoxml = &#x27;&#x27;;
+    } else if (this[p] &amp;&amp; p == 'video') {
+      var videoxml = '';
       // Image handling
-      if (typeof(this[p]) != &#x27;object&#x27; || this[p].length == undefined) {
+      if (typeof(this[p]) != 'object' || this[p].length == undefined) {
         // make it an array
         this[p] = [this[p]];
       }
       this[p].forEach(function (video) {
-        if(typeof(video) != &#x27;object&#x27; || !video.thumbnail_loc || !video.title || !video.description) {
+        if(typeof(video) != 'object' || !video.thumbnail_loc || !video.title || !video.description) {
           // has to be an object and include required categories https://developers.google.com/webmasters/videosearch/sitemaps
           throw new err.InvalidVideoFormat();
         }
-        videoxml += &#x27;&#x3c;video:video&#x3e;&#x27; +
-          &#x27;&#x3c;video:thumbnail_loc&#x3e;&#x27; + video.thumbnail_loc + &#x27;&#x3c;/video:thumbnail_loc&#x3e;&#x27; +
-          &#x27;&#x3c;video:title&#x3e;&#x3c;![CDATA[&#x27; + video.title + &#x27;]]&#x3e;&#x3c;/video:title&#x3e;&#x27; +
-          &#x27;&#x3c;video:description&#x3e;&#x3c;![CDATA[&#x27; + video.description + &#x27;]]&#x3e;&#x3c;/video:description&#x3e;&#x27;;
+        videoxml += '&lt;video:video&gt;' +
+          '&lt;video:thumbnail_loc&gt;' + video.thumbnail_loc + '&lt;/video:thumbnail_loc&gt;' +
+          '&lt;video:title&gt;&lt;![CDATA[' + video.title + ']]&gt;&lt;/video:title&gt;' +
+          '&lt;video:description&gt;&lt;![CDATA[' + video.description + ']]&gt;&lt;/video:description&gt;';
         if (video.content_loc)
-          videoxml += &#x27;&#x3c;video:content_loc&#x3e;&#x27; + video.content_loc + &#x27;&#x3c;/video:content_loc&#x3e;&#x27;;
+          videoxml += '&lt;video:content_loc&gt;' + video.content_loc + '&lt;/video:content_loc&gt;';
         if (video.player_loc)
-          videoxml += &#x27;&#x3c;video:player_loc&#x3e;&#x27; + video.player_loc + &#x27;&#x3c;/video:player_loc&#x3e;&#x27;;
+          videoxml += '&lt;video:player_loc&gt;' + video.player_loc + '&lt;/video:player_loc&gt;';
         if (video.duration)
-          videoxml += &#x27;&#x3c;video:duration&#x3e;&#x27; + video.duration + &#x27;&#x3c;/video:duration&#x3e;&#x27;;
+          videoxml += '&lt;video:duration&gt;' + video.duration + '&lt;/video:duration&gt;';
         if (video.expiration_date)
-          videoxml += &#x27;&#x3c;video:expiration_date&#x3e;&#x27; + video.expiration_date + &#x27;&#x3c;/video:expiration_date&#x3e;&#x27;;
+          videoxml += '&lt;video:expiration_date&gt;' + video.expiration_date + '&lt;/video:expiration_date&gt;';
         if (video.rating)
-          videoxml += &#x27;&#x3c;video:rating&#x3e;&#x27; + video.rating + &#x27;&#x3c;/video:rating&#x3e;&#x27;;
+          videoxml += '&lt;video:rating&gt;' + video.rating + '&lt;/video:rating&gt;';
         if (video.view_count)
-          videoxml += &#x27;&#x3c;video:view_count&#x3e;&#x27; + video.view_count + &#x27;&#x3c;/video:view_count&#x3e;&#x27;;
+          videoxml += '&lt;video:view_count&gt;' + video.view_count + '&lt;/video:view_count&gt;';
         if (video.publication_date)
-          videoxml += &#x27;&#x3c;video:publication_date&#x3e;&#x27; + video.publication_date + &#x27;&#x3c;/video:publication_date&#x3e;&#x27;;
+          videoxml += '&lt;video:publication_date&gt;' + video.publication_date + '&lt;/video:publication_date&gt;';
         if (video.family_friendly)
-          videoxml += &#x27;&#x3c;video:family_friendly&#x3e;&#x27; + video.family_friendly + &#x27;&#x3c;/video:family_friendly&#x3e;&#x27;;
+          videoxml += '&lt;video:family_friendly&gt;' + video.family_friendly + '&lt;/video:family_friendly&gt;';
         if (video.tag)
-          videoxml += &#x27;&#x3c;video:tag&#x3e;&#x27; + video.tag + &#x27;&#x3c;/video:tag&#x3e;&#x27;;
+          videoxml += '&lt;video:tag&gt;' + video.tag + '&lt;/video:tag&gt;';
         if (video.category)
-          videoxml += &#x27;&#x3c;video:category&#x3e;&#x27; + video.category + &#x27;&#x3c;/video:category&#x3e;&#x27;;
+          videoxml += '&lt;video:category&gt;' + video.category + '&lt;/video:category&gt;';
         if (video.restriction)
-          videoxml += &#x27;&#x3c;video:restriction&#x3e;&#x27; + video.restriction + &#x27;&#x3c;/video:restriction&#x3e;&#x27;;
+          videoxml += '&lt;video:restriction&gt;' + video.restriction + '&lt;/video:restriction&gt;';
         if (video.gallery_loc)
-          videoxml += &#x27;&#x3c;video:gallery_loc&#x3e;&#x27; + video.gallery_loc + &#x27;&#x3c;/video:gallery_loc&#x3e;&#x27;;
+          videoxml += '&lt;video:gallery_loc&gt;' + video.gallery_loc + '&lt;/video:gallery_loc&gt;';
         if (video.price)
-          videoxml += &#x27;&#x3c;video:price&#x3e;&#x27; + video.price + &#x27;&#x3c;/video:price&#x3e;&#x27;;
+          videoxml += '&lt;video:price&gt;' + video.price + '&lt;/video:price&gt;';
         if (video.requires_subscription)
-          videoxml += &#x27;&#x3c;video:requires_subscription&#x3e;&#x27; + video.requires_subscription + &#x27;&#x3c;/video:requires_subscription&#x3e;&#x27;;
+          videoxml += '&lt;video:requires_subscription&gt;' + video.requires_subscription + '&lt;/video:requires_subscription&gt;';
         if (video.uploader)
-          videoxml += &#x27;&#x3c;video:uploader&#x3e;&#x27; + video.uploader + ...</pre></li>
+          videoxml += '&lt;video:uploader&gt;' + video.uploader + ...</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 ```javascript
-var sm = require(&#x27;sitemap&#x27;)
+var sm = require('sitemap')
 // Creates a sitemap object given the input configuration with URLs
 var sitemap = sm.createSitemap({ options });
 // Generates XML with a callback function
@@ -2583,8 +2576,8 @@ var xml = sitemap.<span class="apidocCodeKeywordSpan">toString</span>();
 ### Example of using sitemap.js with [express](https://github.com/visionmedia/express):
 
 ```javascript
-var express = require(&#x27;express&#x27;)
-, sm = require(&#x27;sitemap&#x27;);
+var express = require('express')
+, sm = require('sitemap');
 ...</pre></li>
     </ul>
 
@@ -2604,7 +2597,7 @@ var express = require(&#x27;express&#x27;)
 The main functions you want to use in the sitemap module are
 
 ```javascript
-var sm = require(&#x27;sitemap&#x27;)
+var sm = require('sitemap')
 // Creates a sitemap object given the input configuration with URLs
 var sitemap = sm.createSitemap({ options });
 // Generates XML with a callback function
@@ -2636,7 +2629,7 @@ var xml = sitemap.toString();
     <li>description and source-code<pre class="apidocCodePre">function toString() { [native code] }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 ```javascript
-var sm = require(&#x27;sitemap&#x27;)
+var sm = require('sitemap')
 // Creates a sitemap object given the input configuration with URLs
 var sitemap = sm.createSitemap({ options });
 // Generates XML with a callback function
@@ -2648,8 +2641,8 @@ var xml = sitemap.<span class="apidocCodeKeywordSpan">toString</span>();
 ### Example of using sitemap.js with [express](https://github.com/visionmedia/express):
 
 ```javascript
-var express = require(&#x27;express&#x27;)
-, sm = require(&#x27;sitemap&#x27;);
+var express = require('express')
+, sm = require('sitemap');
 ...</pre></li>
     </ul>
 
@@ -2674,7 +2667,7 @@ var express = require(&#x27;express&#x27;)
 The main functions you want to use in the sitemap module are
 
 ```javascript
-var sm = require(&#x27;sitemap&#x27;)
+var sm = require('sitemap')
 // Creates a sitemap object given the input configuration with URLs
 var sitemap = sm.createSitemap({ options });
 // Generates XML with a callback function
@@ -2706,29 +2699,29 @@ var xml = sitemap.toString();
     <li>description and source-code<pre class="apidocCodePre">function buildSitemapIndex(conf) {
   var xml = [];
 
-  xml.push(&#x27;&#x3c;?xml version=&#x22;1.0&#x22; encoding=&#x22;UTF-8&#x22;?&#x3e;&#x27;);
+  xml.push('&lt;?xml version="1.0" encoding="UTF-8"?&gt;');
   if (conf.xslUrl) {
-    xml.push(&#x27;&#x3c;?xml-stylesheet type=&#x22;text/xsl&#x22; href=&#x22;&#x27; + conf.xslUrl + &#x27;&#x22;?&#x3e;&#x27;);
+    xml.push('&lt;?xml-stylesheet type="text/xsl" href="' + conf.xslUrl + '"?&gt;');
   }
   if(!conf.xmlNs) {
-    xml.push(&#x27;&#x3c;sitemapindex xmlns=&#x22;http://www.sitemaps.org/schemas/sitemap/0.9&#x22; &#x27; +
-      &#x27;xmlns:mobile=&#x22;http://www.google.com/schemas/sitemap-mobile/1.0&#x22; &#x27; +
-      &#x27;xmlns:image=&#x22;http://www.google.com/schemas/sitemap-image/1.1&#x22; &#x27; +
-      &#x27;xmlns:video=&#x22;http://www.google.com/schemas/sitemap-video/1.1&#x22;&#x3e;&#x27;);
+    xml.push('&lt;sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" ' +
+      'xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" ' +
+      'xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" ' +
+      'xmlns:video="http://www.google.com/schemas/sitemap-video/1.1"&gt;');
   } else {
-    xml.push(&#x27;&#x3c;sitemapindex &#x27; + conf.xmlNs + &#x27;&#x3e;&#x27;)
+    xml.push('&lt;sitemapindex ' + conf.xmlNs + '&gt;')
   }
 
 
   conf.urls.forEach(function (url) {
-    xml.push(&#x27;&#x3c;sitemap&#x3e;&#x27;);
-    xml.push(&#x27;&#x3c;loc&#x3e;&#x27; + url + &#x27;&#x3c;/loc&#x3e;&#x27;);
-    xml.push(&#x27;&#x3c;/sitemap&#x3e;&#x27;);
+    xml.push('&lt;sitemap&gt;');
+    xml.push('&lt;loc&gt;' + url + '&lt;/loc&gt;');
+    xml.push('&lt;/sitemap&gt;');
   });
 
-  xml.push(&#x27;&#x3c;/sitemapindex&#x3e;&#x27;);
+  xml.push('&lt;/sitemapindex&gt;');
 
-  return xml.join(&#x27;\n&#x27;);
+  return xml.join('\n');
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
     });
@@ -2737,10 +2730,10 @@ var xml = sitemap.toString();
 ### Example of Sitemap Index as String
 
 ```javascript
-var sm = require(&#x27;sitemap&#x27;)
+var sm = require('sitemap')
   , smi = sm.<span class="apidocCodeKeywordSpan">buildSitemapIndex</span>({
-      urls: [&#x27;https://example.com/sitemap1.xml&#x27;, &#x27;https://example.com/sitemap2.xml&#x27;]
-      xslUrl: &#x27;https://example.com/style.xsl&#x27; // optional
+      urls: ['https://example.com/sitemap1.xml', 'https://example.com/sitemap2.xml']
+      xslUrl: 'https://example.com/style.xsl' // optional
     });
 ```
 
@@ -2771,7 +2764,7 @@ Usage
 The main functions you want to use in the sitemap module are
 
 ```javascript
-var sm = require(&#x27;sitemap&#x27;)
+var sm = require('sitemap')
 // Creates a sitemap object given the input configuration with URLs
 var sitemap = sm.<span class="apidocCodeKeywordSpan">createSitemap</span>({ options });
 // Generates XML with a callback function
@@ -2816,14 +2809,14 @@ var xml = sitemap.toString();
 ### Example of Sitemap Index
 
 ```javascript
-var sm = require(&#x27;sitemap&#x27;)
+var sm = require('sitemap')
 , smi = sm.<span class="apidocCodeKeywordSpan">createSitemapIndex</span>({
     cacheTime: 600000,
-    hostname: &#x27;http://www.sitemap.org&#x27;,
-    sitemapName: &#x27;sm-test&#x27;,
+    hostname: 'http://www.sitemap.org',
+    sitemapName: 'sm-test',
     sitemapSize: 1,
-    targetFolder: require(&#x27;os&#x27;).tmpdir(),
-    urls: [&#x27;http://ya.ru&#x27;, &#x27;http://ya2.ru&#x27;]
+    targetFolder: require('os').tmpdir(),
+    urls: ['http://ya.ru', 'http://ya2.ru']
     // optional:
 ...</pre></li>
     </ul>
@@ -2843,8 +2836,8 @@ var sm = require(&#x27;sitemap&#x27;)
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">ChangeFreqInvalidError = function (message) {
-  this.name = &#x27;ChangeFreqInvalidError&#x27;;
-  this.message = message || &#x27;changefreq is invalid&#x27;;
+  this.name = 'ChangeFreqInvalidError';
+  this.message = message || 'changefreq is invalid';
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -2859,8 +2852,8 @@ var sm = require(&#x27;sitemap&#x27;)
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">InvalidVideoFormat = function (message) {
-  this.name = &#x27;InvalidVideoFormat&#x27;;
-  this.message = message || &#x27;must include thumbnail_loc, title and description fields for videos &#x27;;
+  this.name = 'InvalidVideoFormat';
+  this.message = message || 'must include thumbnail_loc, title and description fields for videos ';
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -2875,8 +2868,8 @@ var sm = require(&#x27;sitemap&#x27;)
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">NoURLError = function (message) {
-  this.name = &#x27;NoURLError&#x27;;
-  this.message = message || &#x27;URL is required&#x27;;
+  this.name = 'NoURLError';
+  this.message = message || 'URL is required';
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -2891,8 +2884,8 @@ var sm = require(&#x27;sitemap&#x27;)
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">NoURLProtocolError = function (message) {
-  this.name = &#x27;NoURLProtocolError&#x27;;
-  this.message = message || &#x27;Protocol is required&#x27;;
+  this.name = 'NoURLProtocolError';
+  this.message = message || 'Protocol is required';
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -2907,8 +2900,8 @@ var sm = require(&#x27;sitemap&#x27;)
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">PriorityInvalidError = function (message) {
-  this.name = &#x27;PriorityInvalidError&#x27;;
-  this.message = message || &#x27;priority is invalid&#x27;;
+  this.name = 'PriorityInvalidError';
+  this.message = message || 'priority is invalid';
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -2923,8 +2916,8 @@ var sm = require(&#x27;sitemap&#x27;)
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">UndefinedTargetFolder = function (message) {
-  this.name = &#x27;UndefinedTargetFolder&#x27;;
-  this.message = message || &#x27;Target folder must exist&#x27;;
+  this.name = 'UndefinedTargetFolder';
+  this.message = message || 'Target folder must exist';
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -2944,8 +2937,8 @@ var sm = require(&#x27;sitemap&#x27;)
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">ChangeFreqInvalidError = function (message) {
-  this.name = &#x27;ChangeFreqInvalidError&#x27;;
-  this.message = message || &#x27;changefreq is invalid&#x27;;
+  this.name = 'ChangeFreqInvalidError';
+  this.message = message || 'changefreq is invalid';
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -2965,8 +2958,8 @@ var sm = require(&#x27;sitemap&#x27;)
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">InvalidVideoFormat = function (message) {
-  this.name = &#x27;InvalidVideoFormat&#x27;;
-  this.message = message || &#x27;must include thumbnail_loc, title and description fields for videos &#x27;;
+  this.name = 'InvalidVideoFormat';
+  this.message = message || 'must include thumbnail_loc, title and description fields for videos ';
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -2986,8 +2979,8 @@ var sm = require(&#x27;sitemap&#x27;)
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">NoURLError = function (message) {
-  this.name = &#x27;NoURLError&#x27;;
-  this.message = message || &#x27;URL is required&#x27;;
+  this.name = 'NoURLError';
+  this.message = message || 'URL is required';
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -3007,8 +3000,8 @@ var sm = require(&#x27;sitemap&#x27;)
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">NoURLProtocolError = function (message) {
-  this.name = &#x27;NoURLProtocolError&#x27;;
-  this.message = message || &#x27;Protocol is required&#x27;;
+  this.name = 'NoURLProtocolError';
+  this.message = message || 'Protocol is required';
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -3028,8 +3021,8 @@ var sm = require(&#x27;sitemap&#x27;)
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">PriorityInvalidError = function (message) {
-  this.name = &#x27;PriorityInvalidError&#x27;;
-  this.message = message || &#x27;priority is invalid&#x27;;
+  this.name = 'PriorityInvalidError';
+  this.message = message || 'priority is invalid';
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -3049,8 +3042,8 @@ var sm = require(&#x27;sitemap&#x27;)
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">UndefinedTargetFolder = function (message) {
-  this.name = &#x27;UndefinedTargetFolder&#x27;;
-  this.message = message || &#x27;Target folder must exist&#x27;;
+  this.name = 'UndefinedTargetFolder';
+  this.message = message || 'Target folder must exist';
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -3145,16 +3138,16 @@ var sm = require(&#x27;sitemap&#x27;)
     <ul>
     <li>description and source-code<pre class="apidocCodePre">getTimestampFromDate = function (dt, bRealtime) {
   var timestamp = [dt.getUTCFullYear(), exports.lpad(dt.getUTCMonth() + 1, 2),
-    exports.lpad(dt.getUTCDate(), 2)].join(&#x27;-&#x27;);
+    exports.lpad(dt.getUTCDate(), 2)].join('-');
 
   // Indicate that lastmod should include minutes and seconds (and timezone)
-  if (bRealtime &#x26;&#x26; bRealtime === true) {
-    timestamp += &#x27;T&#x27;;
+  if (bRealtime &amp;&amp; bRealtime === true) {
+    timestamp += 'T';
     timestamp += [exports.lpad(dt.getUTCHours(), 2),
       exports.lpad(dt.getUTCMinutes(), 2),
       exports.lpad(dt.getUTCSeconds(), 2)
-    ].join(&#x27;:&#x27;);
-    timestamp += &#x27;Z&#x27;;
+    ].join(':');
+    timestamp += 'Z';
   }
 
   return timestamp;
@@ -3172,7 +3165,7 @@ var sm = require(&#x27;sitemap&#x27;)
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">htmlEscape = function (text) {
-  return text.replace(/&#x26;/g, &#x27;&#x26;amp;&#x27;).replace(/&#x3c;/g, &#x27;&#x26;lt;&#x27;).replace(/&#x3e;/g, &#x27;&#x26;gt;&#x27;).replace(/&#x22;/g, &#x27;&#x26;quot;&#x27;).replace(/&#x27;/g, &#x27;&#x26;#039;&#x27;);
+  return text.replace(/&amp;/g, '&amp;amp;').replace(/&lt;/g, '&amp;lt;').replace(/&gt;/g, '&amp;gt;').replace(/"/g, '&amp;quot;').replace(/'/g, '&amp;#039;');
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -3188,20 +3181,20 @@ var sm = require(&#x27;sitemap&#x27;)
     <ul>
     <li>description and source-code<pre class="apidocCodePre">lpad = function (n, len, chr) {
   var res = n.toString()
-    , chr = chr || &#x27;0&#x27;
-    , leading = (res.substr(0, 1) === &#x27;-&#x27;);
+    , chr = chr || '0'
+    , leading = (res.substr(0, 1) === '-');
 
   //If left side of string is a minus sign (negative number), we want to ignore that in the padding process
   if (leading) {
-    res = res.substr(1); //cut-off the leading &#x27;-&#x27;
+    res = res.substr(1); //cut-off the leading '-'
   }
 
-  while (res.length &#x3c; len) {
+  while (res.length &lt; len) {
     res = chr + res;
   }
 
-  if (leading) { //If we initially cutoff the leading &#x27;-&#x27;, we add it again here
-    res = &#x27;-&#x27; + res;
+  if (leading) { //If we initially cutoff the leading '-', we add it again here
+    res = '-' + res;
   }
 
   return res;
@@ -3319,16 +3312,16 @@ var sm = require(&#x27;sitemap&#x27;)
     <ul>
     <li>description and source-code<pre class="apidocCodePre">getTimestampFromDate = function (dt, bRealtime) {
   var timestamp = [dt.getUTCFullYear(), exports.lpad(dt.getUTCMonth() + 1, 2),
-    exports.lpad(dt.getUTCDate(), 2)].join(&#x27;-&#x27;);
+    exports.lpad(dt.getUTCDate(), 2)].join('-');
 
   // Indicate that lastmod should include minutes and seconds (and timezone)
-  if (bRealtime &#x26;&#x26; bRealtime === true) {
-    timestamp += &#x27;T&#x27;;
+  if (bRealtime &amp;&amp; bRealtime === true) {
+    timestamp += 'T';
     timestamp += [exports.lpad(dt.getUTCHours(), 2),
       exports.lpad(dt.getUTCMinutes(), 2),
       exports.lpad(dt.getUTCSeconds(), 2)
-    ].join(&#x27;:&#x27;);
-    timestamp += &#x27;Z&#x27;;
+    ].join(':');
+    timestamp += 'Z';
   }
 
   return timestamp;
@@ -3351,7 +3344,7 @@ var sm = require(&#x27;sitemap&#x27;)
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">htmlEscape = function (text) {
-  return text.replace(/&#x26;/g, &#x27;&#x26;amp;&#x27;).replace(/&#x3c;/g, &#x27;&#x26;lt;&#x27;).replace(/&#x3e;/g, &#x27;&#x26;gt;&#x27;).replace(/&#x22;/g, &#x27;&#x26;quot;&#x27;).replace(/&#x27;/g, &#x27;&#x26;#039;&#x27;);
+  return text.replace(/&amp;/g, '&amp;amp;').replace(/&lt;/g, '&amp;lt;').replace(/&gt;/g, '&amp;gt;').replace(/"/g, '&amp;quot;').replace(/'/g, '&amp;#039;');
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -3372,20 +3365,20 @@ var sm = require(&#x27;sitemap&#x27;)
     <ul>
     <li>description and source-code<pre class="apidocCodePre">lpad = function (n, len, chr) {
   var res = n.toString()
-    , chr = chr || &#x27;0&#x27;
-    , leading = (res.substr(0, 1) === &#x27;-&#x27;);
+    , chr = chr || '0'
+    , leading = (res.substr(0, 1) === '-');
 
   //If left side of string is a minus sign (negative number), we want to ignore that in the padding process
   if (leading) {
-    res = res.substr(1); //cut-off the leading &#x27;-&#x27;
+    res = res.substr(1); //cut-off the leading '-'
   }
 
-  while (res.length &#x3c; len) {
+  while (res.length &lt; len) {
     res = chr + res;
   }
 
-  if (leading) { //If we initially cutoff the leading &#x27;-&#x27;, we add it again here
-    res = &#x27;-&#x27; + res;
+  if (leading) { //If we initially cutoff the leading '-', we add it again here
+    res = '-' + res;
   }
 
   return res;
@@ -3402,3 +3395,4 @@ var sm = require(&#x27;sitemap&#x27;)
     ]
 </div>
 </div>
+</body></html>
