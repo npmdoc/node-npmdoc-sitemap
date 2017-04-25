@@ -1,4 +1,7 @@
-# api documentation for  [sitemap (v1.12.0)](https://github.com/ekalinin/sitemap.js#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-sitemap.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-sitemap) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-sitemap.svg)](https://travis-ci.org/npmdoc/node-npmdoc-sitemap)
+# npmdoc-sitemap
+
+#### basic api documentation for  [sitemap (v1.12.0)](https://github.com/ekalinin/sitemap.js#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-sitemap.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-sitemap) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-sitemap.svg)](https://travis-ci.org/npmdoc/node-npmdoc-sitemap)
+
 #### Sitemap-generating framework
 
 [![NPM](https://nodei.co/npm/sitemap.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/sitemap)
@@ -59,7 +62,8 @@
     "scripts": {
         "test": "./node_modules/expresso/bin/expresso tests/sitemap.test.js"
     },
-    "version": "1.12.0"
+    "version": "1.12.0",
+    "bin": {}
 }
 ```
 
